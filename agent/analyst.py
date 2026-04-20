@@ -28,7 +28,10 @@ Action rules:
 Only return valid JSON. No markdown, no explanation outside the JSON."""
 
 
-def build_prompt(portfolio: dict, prices: dict, news: dict) -> str:
+def build_prompt(portfolio: dict, prices: dict, news: dict, trending: list[str] | None = None) -> str:
+    held = {h["ticker"] for h in portfolio["holdings"]}
+    watched = set(portfolio["watchlist"])
+
     lines = [f"Available cash: €{portfolio['cash']:.2f}\n"]
     lines.append("Current holdings:")
     for h in portfolio["holdings"]:
@@ -48,6 +51,18 @@ def build_prompt(portfolio: dict, prices: dict, news: dict) -> str:
         lines.append(f"  {ticker}: €{current} ({pct:+.1f}%)")
         for hl in headlines:
             lines.append(f"    - {hl}")
+    buzz = [t for t in (trending or []) if t not in held and t not in watched]
+    if buzz:
+        lines.append("\nMarket buzz (trending, not on watchlist):")
+        for ticker in buzz:
+            price_data = prices.get(ticker, {})
+            current = price_data.get("price", "N/A")
+            pct = price_data.get("pct_change", 0)
+            headlines = news.get(ticker, [])
+            lines.append(f"  {ticker}: €{current} ({pct:+.1f}%)")
+            for hl in headlines:
+                lines.append(f"    - {hl}")
+        lines.append("  (Use watchlist_additions to track any of these you find promising)")
     return "\n".join(lines)
 
 
@@ -62,9 +77,9 @@ def parse_response(raw: str) -> dict:
         raise ValueError(f"Claude returned invalid JSON: {e}\nRaw: {raw}")
 
 
-def analyse(portfolio: dict, prices: dict, news: dict, api_key: str) -> dict:
+def analyse(portfolio: dict, prices: dict, news: dict, api_key: str, trending: list[str] | None = None) -> dict:
     client = anthropic.Anthropic(api_key=api_key)
-    prompt = build_prompt(portfolio, prices, news)
+    prompt = build_prompt(portfolio, prices, news, trending=trending)
     try:
         response = client.messages.create(
             model="claude-haiku-4-5-20251001",

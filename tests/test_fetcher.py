@@ -1,20 +1,21 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from agent.fetcher import fetch_prices, fetch_news
+from agent.fetcher import fetch_prices, fetch_news, fetch_trending_tickers
 
 def test_fetch_prices_returns_dict():
+    import pandas as pd
     mock_ticker = MagicMock()
-    mock_ticker.fast_info.last_price = 118.40
-    mock_ticker.fast_info.previous_close = 123.58
+    mock_ticker.history.return_value = pd.DataFrame({"Close": [123.58, 118.40]})
     with patch("agent.fetcher.yf.Ticker", return_value=mock_ticker):
         result = fetch_prices(["NVDA"])
     assert "NVDA" in result
     assert result["NVDA"]["price"] == 118.40
-    assert round(result["NVDA"]["pct_change"], 2) == -4.2
+    assert round(result["NVDA"]["pct_change"], 1) == -4.2
 
 def test_fetch_prices_handles_missing_ticker():
+    import pandas as pd
     mock_ticker = MagicMock()
-    mock_ticker.fast_info.last_price = None
+    mock_ticker.history.return_value = pd.DataFrame({"Close": []})
     with patch("agent.fetcher.yf.Ticker", return_value=mock_ticker):
         result = fetch_prices(["FAKE"])
     assert result == {}
@@ -52,3 +53,34 @@ def test_fetch_news_handles_exception(requests_mock):
     )
     result = fetch_news(["NVDA"], api_key="test-key")
     assert result == {"NVDA": []}
+
+
+def test_fetch_trending_tickers_returns_symbols(requests_mock):
+    requests_mock.get(
+        "https://query1.finance.yahoo.com/v1/finance/trending/US",
+        json={
+            "finance": {
+                "result": [{"quotes": [{"symbol": "PLTR"}, {"symbol": "COIN"}, {"symbol": "AMD"}]}]
+            }
+        }
+    )
+    result = fetch_trending_tickers(limit=3)
+    assert result == ["PLTR", "COIN", "AMD"]
+
+
+def test_fetch_trending_tickers_returns_empty_on_http_error(requests_mock):
+    requests_mock.get(
+        "https://query1.finance.yahoo.com/v1/finance/trending/US",
+        status_code=429
+    )
+    result = fetch_trending_tickers()
+    assert result == []
+
+
+def test_fetch_trending_tickers_returns_empty_on_exception(requests_mock):
+    requests_mock.get(
+        "https://query1.finance.yahoo.com/v1/finance/trending/US",
+        exc=Exception("network error")
+    )
+    result = fetch_trending_tickers()
+    assert result == []

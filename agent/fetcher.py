@@ -5,6 +5,31 @@ import requests
 
 logger = logging.getLogger(__name__)
 
+_TRENDING_URL = "https://query1.finance.yahoo.com/v1/finance/trending/US"
+
+
+def fetch_trending_tickers(limit: int = 10) -> list[str]:
+    """Fetch trending tickers from Yahoo Finance's US trending endpoint.
+
+    Returns up to `limit` ticker symbols currently trending on Yahoo Finance.
+    Never raises — returns an empty list on any failure.
+    """
+    try:
+        resp = requests.get(
+            _TRENDING_URL,
+            params={"count": limit, "lang": "en-US"},
+            headers={"User-Agent": "Mozilla/5.0"},
+            timeout=10,
+        )
+        if resp.status_code != 200:
+            logger.warning("fetch_trending_tickers: HTTP %d", resp.status_code)
+            return []
+        quotes = resp.json()["finance"]["result"][0]["quotes"]
+        return [q["symbol"] for q in quotes[:limit] if "symbol" in q]
+    except Exception as exc:
+        logger.warning("fetch_trending_tickers failed: %r", exc)
+        return []
+
 
 def fetch_prices(tickers: list[str]) -> dict[str, dict]:
     """Fetch prices from Yahoo Finance using recent history (works market-open and closed).

@@ -2,7 +2,7 @@ import os
 import logging
 from dotenv import load_dotenv
 from agent.portfolio import load_portfolio, save_portfolio, apply_action
-from agent.fetcher import fetch_prices, fetch_news
+from agent.fetcher import fetch_prices, fetch_news, fetch_trending_tickers
 from agent.analyst import analyse
 from agent.notifier import format_alert, send_message
 
@@ -26,12 +26,17 @@ def run() -> None:
             portfolio["watchlist"]
         )
 
-        logger.info("Fetching prices and news for: %s", all_tickers)
-        prices = fetch_prices(all_tickers)
-        news = fetch_news(all_tickers, api_key=news_api_key)
+        logger.info("Fetching trending tickers")
+        trending = fetch_trending_tickers(limit=10)
+        logger.info("Trending: %s", trending)
+
+        buzz_tickers = [t for t in trending if t not in all_tickers]
+        logger.info("Fetching prices and news for: %s", all_tickers + buzz_tickers)
+        prices = fetch_prices(all_tickers + buzz_tickers)
+        news = fetch_news(all_tickers + buzz_tickers, api_key=news_api_key)
 
         logger.info("Calling Claude analyst")
-        result = analyse(portfolio, prices, news, api_key=anthropic_key)
+        result = analyse(portfolio, prices, news, api_key=anthropic_key, trending=trending)
 
         # Update watchlist based on Claude's recommendations
         watchlist = list(portfolio["watchlist"])
