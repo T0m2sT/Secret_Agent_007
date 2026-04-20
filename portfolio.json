@@ -1,55 +1,16 @@
 {
-  "cash": 86.6,
+  "cash": 100.0,
   "holdings": [],
   "watchlist": [
     "SPY",
     "QQQ",
+    "NVDA",
     "TSLA",
+    "MSFT",
     "META",
     "AMZN"
   ],
   "last_run": null,
   "last_alert": null,
-  "trade_log": [
-    {
-      "ticker": "NVDA",
-      "shares": 0.1,
-      "avg_buy_price": 185.0,
-      "sell_price": 191.0,
-      "pnl": 0.6,
-      "closed_at": "2026-04-20 22:58 UTC"
-    },
-    {
-      "ticker": "MSFT",
-      "shares": 0.4,
-      "avg_buy_price": 100.0,
-      "sell_price": 120.0,
-      "pnl": 8.0,
-      "closed_at": "2026-04-20 23:00 UTC"
-    },
-    {
-      "ticker": "NVDA",
-      "shares": 0.1,
-      "avg_buy_price": 185.0,
-      "sell_price": 200.0,
-      "pnl": 1.5,
-      "closed_at": "2026-04-20 23:00 UTC"
-    },
-    {
-      "ticker": "NVDA",
-      "shares": 0.5,
-      "avg_buy_price": 150.0,
-      "sell_price": 135.0,
-      "pnl": -7.5,
-      "closed_at": "2026-04-20 23:03 UTC"
-    },
-    {
-      "ticker": "MSFT",
-      "shares": 0.4,
-      "avg_buy_price": 140.0,
-      "sell_price": 100.0,
-      "pnl": -16.0,
-      "closed_at": "2026-04-20 23:04 UTC"
-    }
-  ]
+  "trade_log": []
 }
