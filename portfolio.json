@@ -1,14 +1,16 @@
 {
-  "cash": 100.64,
+  "cash": 100.0,
   "holdings": [],
   "watchlist": [
     "SPY",
     "QQQ",
+    "NVDA",
     "TSLA",
     "MSFT",
     "META",
     "AMZN"
   ],
   "last_run": null,
-  "last_alert": null
+  "last_alert": null,
+  "trade_log": []
 }
