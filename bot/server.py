@@ -139,25 +139,37 @@ def webhook():
 
         elif text.startswith("/sell"):
             parts = text.split()
-            if len(parts) != 3:
-                send(chat_id, "Usage: `/sell TICKER AMOUNT`\nExamples:\n`/sell NVDA 50%`\n`/sell NVDA ALL`")
+            if len(parts) not in (3, 4):
+                send(chat_id, "Usage: `/sell TICKER AMOUNT [PRICE]`\nExamples:\n`/sell NVDA 50% 191.20`\n`/sell NVDA ALL 191.20`\n`/sell NVDA 50%` (uses last known price)")
             else:
-                _, ticker, amount = parts
+                _, ticker, amount = parts[0], parts[1], parts[2]
+                price_str = parts[3] if len(parts) == 4 else None
                 ticker = ticker.upper()
                 amount_up = amount.upper()
                 if amount_up != "ALL" and not (amount_up.endswith("%") and amount_up[:-1].replace(".", "").isdigit()):
-                    send(chat_id, "⚠️ Amount must be a percentage like `50%` or `ALL`.\nExample: `/sell NVDA 50%`")
+                    send(chat_id, "⚠️ Amount must be a percentage like `50%` or `ALL`.\nExample: `/sell NVDA 50% 191.20`")
                 else:
-                    portfolio = get_portfolio()
-                    holding = next((h for h in portfolio["holdings"] if h["ticker"] == ticker), None)
-                    if not holding:
-                        send(chat_id, f"⚠️ You don't hold {ticker}.")
-                    else:
-                        price = holding["last_price"]
-                        action = {"action": "SELL", "ticker": ticker, "amount": amount_up, "last_price": price}
-                        updated = apply_action(portfolio, action)
-                        save_portfolio_github(updated)
-                        send(chat_id, f"✅ *SELL recorded*\n{ticker} {amount_up} @ €{price:.2f} | Cash now: €{updated['cash']:.2f}")
+                    override_price = None
+                    if price_str is not None:
+                        try:
+                            override_price = float(price_str)
+                            if override_price <= 0:
+                                raise ValueError
+                        except ValueError:
+                            send(chat_id, "⚠️ Price must be a positive number.")
+                            override_price = None
+                            amount_up = None
+                    if amount_up is not None:
+                        portfolio = get_portfolio()
+                        holding = next((h for h in portfolio["holdings"] if h["ticker"] == ticker), None)
+                        if not holding:
+                            send(chat_id, f"⚠️ You don't hold {ticker}.")
+                        else:
+                            price = override_price if override_price is not None else holding["last_price"]
+                            action = {"action": "SELL", "ticker": ticker, "amount": amount_up, "last_price": price}
+                            updated = apply_action(portfolio, action)
+                            save_portfolio_github(updated)
+                            send(chat_id, f"✅ *SELL recorded*\n{ticker} {amount_up} @ €{price:.2f} | Cash now: €{updated['cash']:.2f}")
 
     except Exception as exc:
         logger.error("Webhook handler error: %r", exc)
