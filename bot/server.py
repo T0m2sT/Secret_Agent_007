@@ -124,6 +124,18 @@ def webhook():
                 lines.append(f"\n*Total P&L: {total_str}*")
                 send(chat_id, "\n".join(lines))
 
+        elif text == "/reset":
+            clean = {
+                "cash": 100.0,
+                "holdings": [],
+                "watchlist": ["SPY", "QQQ", "NVDA", "TSLA", "MSFT", "META", "AMZN"],
+                "last_run": None,
+                "last_alert": None,
+                "trade_log": [],
+            }
+            save_portfolio_github(clean)
+            send(chat_id, "🔄 Portfolio reset to €100.00 cash, no holdings.")
+
         elif text == "/status":
             portfolio = get_portfolio()
             last_run = portfolio.get("last_run", "Never")
