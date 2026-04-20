@@ -1,7 +1,21 @@
 {
-  "cash": 100.0,
-  "holdings": [],
-  "watchlist": ["SPY", "QQQ", "NVDA", "TSLA", "MSFT", "META", "AMZN"],
+  "cash": 62.12,
+  "holdings": [
+    {
+      "ticker": "NVDA",
+      "shares": 0.2,
+      "avg_buy_price": 189.4,
+      "last_price": 189.4
+    }
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "TSLA",
+    "MSFT",
+    "META",
+    "AMZN"
+  ],
   "last_run": null,
   "last_alert": null
 }
