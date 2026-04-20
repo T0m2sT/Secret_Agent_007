@@ -5,6 +5,7 @@ import logging
 import anthropic
 import requests
 from flask import Flask, request
+from agent.portfolio import apply_action
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -130,7 +131,6 @@ def webhook():
                         send(chat_id, f"⚠️ Not enough cash. You have €{portfolio['cash']:.2f}, this costs €{cost:.2f}.")
                     else:
                         action = {"action": "BUY", "ticker": ticker, "amount": str(cost), "last_price": price}
-                        from agent.portfolio import apply_action
                         updated = apply_action(portfolio, action)
                         save_portfolio_github(updated)
                         send(chat_id, f"✅ *BUY recorded*\n{shares} shares of {ticker} @ €{price:.2f}\nCost: €{cost:.2f} | Cash left: €{updated['cash']:.2f}")
@@ -153,7 +153,6 @@ def webhook():
                     else:
                         price = holding["last_price"]
                         action = {"action": "SELL", "ticker": ticker, "amount": amount_up, "last_price": price}
-                        from agent.portfolio import apply_action
                         updated = apply_action(portfolio, action)
                         save_portfolio_github(updated)
                         send(chat_id, f"✅ *SELL recorded*\n{ticker} {amount_up} @ €{price:.2f} | Cash now: €{updated['cash']:.2f}")
