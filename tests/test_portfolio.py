@@ -25,6 +25,8 @@ def test_save_portfolio(tmp_path):
     save_portfolio(SAMPLE, str(p))
     loaded = json.loads(p.read_text())
     assert loaded["cash"] == 50.00
+    assert loaded["last_run"] is not None
+    assert "T" in loaded["last_run"]
 
 def test_compute_pnl():
     holding = {"ticker": "NVDA", "shares": 0.25, "avg_buy_price": 110.00, "last_price": 118.40}

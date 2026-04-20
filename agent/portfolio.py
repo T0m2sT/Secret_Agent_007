@@ -5,8 +5,13 @@ PORTFOLIO_PATH = "portfolio.json"
 
 
 def load_portfolio(path: str = PORTFOLIO_PATH) -> dict:
-    with open(path) as f:
-        return json.load(f)
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Portfolio file not found: {path}")
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Corrupted portfolio.json: {e}")
 
 
 def save_portfolio(portfolio: dict, path: str = PORTFOLIO_PATH) -> None:
@@ -38,6 +43,7 @@ def apply_action(portfolio: dict, action: dict) -> dict:
         else:
             pct = float(amount.replace("%", "")) / 100
             sell_shares = holding["shares"] * pct
+        sell_shares = min(sell_shares, holding["shares"])
         cash += sell_shares * price
         holding["shares"] = round(holding["shares"] - sell_shares, 8)
         holdings = [h for h in holdings if h["shares"] > 0.00001]
@@ -51,11 +57,12 @@ def apply_action(portfolio: dict, action: dict) -> dict:
         existing = next((h for h in holdings if h["ticker"] == ticker), None)
         if existing:
             total_shares = existing["shares"] + shares
-            existing["avg_buy_price"] = (
-                (existing["avg_buy_price"] * existing["shares"] + price * shares) / total_shares
-            )
-            existing["shares"] = round(total_shares, 8)
-            existing["last_price"] = price
+            new_avg = (existing["avg_buy_price"] * existing["shares"] + price * shares) / total_shares
+            holdings = [
+                {**h, "avg_buy_price": round(new_avg, 6), "shares": round(total_shares, 8), "last_price": price}
+                if h["ticker"] == ticker else h
+                for h in holdings
+            ]
         else:
             holdings.append({
                 "ticker": ticker,
