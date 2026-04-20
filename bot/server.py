@@ -157,6 +157,7 @@ def webhook():
             portfolio = get_portfolio()
             last_run = portfolio.get("last_run", "Never")
             now = datetime.now(timezone.utc)
+            lisbon = timezone(timedelta(hours=1))
             next_hour = ((now.hour // 4) + 1) * 4
             next_run = now.replace(minute=0, second=0, microsecond=0)
             if next_hour >= 24:
@@ -164,7 +165,8 @@ def webhook():
             else:
                 next_run = next_run.replace(hour=next_hour)
             mins_away = int((next_run - now).total_seconds() / 60)
-            send(chat_id, f"🕐 Last run: {last_run}\n⏭ Next run: {next_run.strftime('%H:%M UTC')} (in {mins_away}m)")
+            next_run_local = next_run.astimezone(lisbon)
+            send(chat_id, f"🕐 Last run: {last_run}\n⏭ Next run: {next_run_local.strftime('%H:%M Lisbon')} (in {mins_away}m)")
 
         elif text.startswith("/buy"):
             parts = text.split()
