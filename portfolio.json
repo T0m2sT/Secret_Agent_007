@@ -1,33 +1,7 @@
 {
-  "cash": 50.42,
-  "holdings": [
-    {
-      "ticker": "NVDA",
-      "shares": 0.24578624,
-      "avg_buy_price": 201.72,
-      "last_price": 201.72
-    }
-  ],
-  "watchlist": [
-    "SPY",
-    "QQQ",
-    "TSLA",
-    "MSFT",
-    "META",
-    "AMZN"
-  ],
-  "last_run": "2026-04-20T21:56:58.907851+00:00",
-  "last_alert": {
-    "ticker": "NVDA",
-    "action": "HOLD",
-    "reasoning": "Small positive gain with no catalyst. Holding for better entry or exit signal.",
-    "all_actions": [
-      {
-        "ticker": "NVDA",
-        "action": "HOLD",
-        "headline": "NVDA flat, minimal momentum",
-        "reasoning": "Small positive gain with no catalyst. Holding for better entry or exit signal."
-      }
-    ]
-  }
+  "cash": 100.0,
+  "holdings": [],
+  "watchlist": ["SPY", "QQQ", "NVDA", "TSLA", "MSFT", "META", "AMZN"],
+  "last_run": null,
+  "last_alert": null
 }
