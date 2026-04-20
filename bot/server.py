@@ -40,9 +40,10 @@ def send(chat_id: str, text: str) -> None:
 
 
 def get_portfolio() -> dict:
-    resp = requests.get(PORTFOLIO_URL, timeout=10)
+    resp = requests.get(_GITHUB_API, headers=_GITHUB_HEADERS, timeout=10)
     resp.raise_for_status()
-    return resp.json()
+    content = base64.b64decode(resp.json()["content"]).decode()
+    return json.loads(content)
 
 
 def save_portfolio_github(portfolio: dict) -> None:
