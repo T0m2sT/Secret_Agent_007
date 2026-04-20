@@ -1,5 +1,8 @@
+import logging
 import pytest
-from agent.notifier import format_alert, format_portfolio
+import requests
+from unittest.mock import MagicMock
+from agent.notifier import format_alert, format_portfolio, send_message
 
 def test_format_alert_sell():
     action = {"ticker": "NVDA", "action": "SELL", "amount": "30%", "headline": "Export controls hit chip stocks", "reasoning": "Risk elevated short-term."}
@@ -38,3 +41,18 @@ def test_format_portfolio():
     assert "NVDA" in msg
     assert "23.40" in msg
     assert "P&L" in msg
+
+
+def test_send_message_success(mocker):
+    mock_resp = MagicMock()
+    mock_resp.raise_for_status.return_value = None
+    mock_resp.json.return_value = {"ok": True}
+    mocker.patch("agent.notifier.requests.post", return_value=mock_resp)
+    send_message("token", "chat", "hello")  # should not raise
+
+
+def test_send_message_request_exception_is_logged(mocker, caplog):
+    mocker.patch("agent.notifier.requests.post", side_effect=requests.RequestException("timeout"))
+    with caplog.at_level(logging.ERROR, logger="agent.notifier"):
+        send_message("token", "chat", "hello")
+    assert "Failed to send" in caplog.text

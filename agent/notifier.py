@@ -22,15 +22,15 @@ def format_alert(action: dict, prices: dict) -> str:
         amount = action.get("amount", "")
         headline = action.get("headline", "")
         title = f"{emoji} SELL {amount} — {ticker}"
-        body = f"💰 Price: ${price} ({pct_str})\n📰 {headline}\nAction: Sell {amount} of your {ticker} position"
+        body = f"💰 Price: €{price} ({pct_str})\n📰 {headline}\nAction: Sell {amount} of your {ticker} position"
     elif act == "BUY":
         amount = action.get("amount", "")
         headline = action.get("headline", "")
         title = f"{emoji} BUY €{amount} — {ticker}"
-        body = f"💰 Price: ${price} ({pct_str})\n📰 {headline}\nAction: Buy €{amount} of {ticker}"
+        body = f"💰 Price: €{price} ({pct_str})\n📰 {headline}\nAction: Buy €{amount} of {ticker}"
     else:
         title = f"{emoji} HOLD — {ticker}"
-        body = f"💰 Price: ${price} ({pct_str})\nNo action needed."
+        body = f"💰 Price: €{price} ({pct_str})\nNo action needed."
 
     return f"{title}\n{now}\n\n{body}\n\nReply /reason to see full analysis"
 
@@ -59,5 +59,8 @@ def send_message(token: str, chat_id: str, text: str) -> None:
             timeout=10,
         )
         resp.raise_for_status()
+        payload = resp.json()
+        if not payload.get("ok"):
+            logger.error("Telegram API error: %s", payload.get("description"))
     except requests.RequestException as exc:
         logger.error("Failed to send Telegram message: %r", exc)
