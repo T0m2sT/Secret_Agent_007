@@ -3,6 +3,8 @@ name: Portfolio Agent
 on:
   schedule:
     - cron: '0 */4 * * *'
+    - cron: '0 15 * * 1-5'
+    - cron: '0 18 * * 1-5'
   workflow_dispatch:
 
 permissions:
