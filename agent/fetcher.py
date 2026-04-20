@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 def fetch_prices(tickers: list[str]) -> dict[str, dict]:
-    """Fetch prices from Yahoo Finance, falling back to recent history when market is closed.
+    """Fetch prices from Yahoo Finance using recent history (works market-open and closed).
 
     Returns a mapping of ticker -> {"price": float, "pct_change": float}.
     Tickers with missing data are silently skipped.
@@ -17,17 +17,14 @@ def fetch_prices(tickers: list[str]) -> dict[str, dict]:
     for ticker in tickers:
         try:
             t = yf.Ticker(ticker)
-            last = t.fast_info.last_price
-            prev = t.fast_info.previous_close
-            # Fall back to recent history when market is closed
-            if last is None or prev is None or prev == 0:
-                hist = t.history(period="5d")
-                if hist.empty or len(hist) < 2:
-                    continue
-                last = float(hist["Close"].iloc[-1])
-                prev = float(hist["Close"].iloc[-2])
-                if prev == 0:
-                    continue
+            hist = t.history(period="5d")
+            if hist.empty or len(hist) < 2:
+                logger.warning("fetch_prices: no history data for %s", ticker)
+                continue
+            last = float(hist["Close"].iloc[-1])
+            prev = float(hist["Close"].iloc[-2])
+            if prev == 0:
+                continue
             pct = ((last - prev) / prev) * 100
             prices[ticker] = {"price": round(last, 2), "pct_change": round(pct, 1)}
         except Exception as exc:
