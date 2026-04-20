@@ -48,6 +48,9 @@ def run() -> None:
             ticker = action["ticker"]
             price_data = prices.get(ticker, {})
             last_price = price_data.get("price", 0)
+            if last_price == 0 and action.get("action") == "BUY":
+                logger.warning("Skipping BUY for %s — no price data available", ticker)
+                continue
             action_with_price = {**action, "last_price": last_price}
             portfolio = apply_action(portfolio, action_with_price)
 
