@@ -1,13 +1,6 @@
 {
-  "cash": 46.6,
-  "holdings": [
-    {
-      "ticker": "MSFT",
-      "shares": 0.4,
-      "avg_buy_price": 140.0,
-      "last_price": 140.0
-    }
-  ],
+  "cash": 86.6,
+  "holdings": [],
   "watchlist": [
     "SPY",
     "QQQ",
@@ -49,6 +42,14 @@
       "sell_price": 135.0,
       "pnl": -7.5,
       "closed_at": "2026-04-20 23:03 UTC"
+    },
+    {
+      "ticker": "MSFT",
+      "shares": 0.4,
+      "avg_buy_price": 140.0,
+      "sell_price": 100.0,
+      "pnl": -16.0,
+      "closed_at": "2026-04-20 23:04 UTC"
     }
   ]
 }
