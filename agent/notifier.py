@@ -1,6 +1,7 @@
 import logging
 import requests
-from datetime import datetime, timezone
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +20,7 @@ def _price_line(ticker: str, prices: dict) -> str:
 def format_alert(action: dict, prices: dict) -> str:
     ticker = action["ticker"]
     act = action["action"]
-    now = datetime.now(timezone.utc).strftime("%a %d %b · %H:%M UTC")
+    now = datetime.now(ZoneInfo("Europe/Lisbon")).strftime("%a %d %b · %H:%M %Z")
     emoji = EMOJI.get(act, "⚪")
     pl = _price_line(ticker, prices)
 
@@ -66,7 +67,7 @@ def format_alert(action: dict, prices: dict) -> str:
 
 
 def format_no_action(actions: list, prices: dict) -> str:
-    now = datetime.now(timezone.utc).strftime("%a %d %b · %H:%M UTC")
+    now = datetime.now(ZoneInfo("Europe/Lisbon")).strftime("%a %d %b · %H:%M %Z")
     lines = [
         f"🟡 *NO ACTION*",
         now,
