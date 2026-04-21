@@ -7,51 +7,81 @@ logger = logging.getLogger(__name__)
 EMOJI = {"SELL": "🔴", "BUY": "🟢", "HOLD": "🟡"}
 
 
+def _price_line(ticker: str, prices: dict) -> str:
+    price_data = prices.get(ticker, {})
+    raw_price = price_data.get("price", None)
+    price = f"€{raw_price:.2f}" if raw_price is not None else "N/A"
+    pct = price_data.get("pct_change", 0)
+    pct_str = f"+{pct:.1f}%" if pct >= 0 else f"{pct:.1f}%"
+    return f"{price}  {pct_str}"
+
+
 def format_alert(action: dict, prices: dict) -> str:
     ticker = action["ticker"]
     act = action["action"]
-    price_data = prices.get(ticker, {})
-    raw_price = price_data.get("price", None)
-    price = f"{raw_price:.2f}" if raw_price is not None else "N/A"
-    pct = price_data.get("pct_change", 0)
-    pct_str = f"+{pct:.1f}%" if pct >= 0 else f"{pct:.1f}%"
     now = datetime.now(timezone.utc).strftime("%a %d %b · %H:%M UTC")
     emoji = EMOJI.get(act, "⚪")
+    pl = _price_line(ticker, prices)
 
     if act == "SELL":
         amount = action.get("amount", "")
         headline = action.get("headline", "")
-        title = f"{emoji} SELL {amount} — {ticker}"
-        body = f"💰 Price: €{price} ({pct_str})\n📰 {headline}\nAction: Sell {amount} of your {ticker} position"
+        reasoning = action.get("reasoning", "")
+        lines = [
+            f"{emoji} *SELL {amount} · {ticker}*",
+            now,
+            "",
+            f"💰 {pl}",
+            f"📰 _{headline}_",
+            "",
+            reasoning,
+            "",
+            "Reply /reason to see full analysis",
+        ]
     elif act == "BUY":
         amount = action.get("amount", "")
         headline = action.get("headline", "")
-        title = f"{emoji} BUY €{amount} — {ticker}"
-        body = f"💰 Price: €{price} ({pct_str})\n📰 {headline}\nAction: Buy €{amount} of {ticker}"
+        reasoning = action.get("reasoning", "")
+        lines = [
+            f"{emoji} *BUY €{amount} · {ticker}*",
+            now,
+            "",
+            f"💰 {pl}",
+            f"📰 _{headline}_",
+            "",
+            reasoning,
+            "",
+            "Reply /reason to see full analysis",
+        ]
     else:
-        title = f"{emoji} HOLD — {ticker}"
-        body = f"💰 Price: €{price} ({pct_str})\nNo action needed."
+        lines = [
+            f"{emoji} *HOLD · {ticker}*",
+            now,
+            "",
+            f"💰 {pl}",
+            "No action needed.",
+        ]
 
-    return f"{title}\n{now}\n\n{body}\n\nReply /reason to see full analysis"
+    return "\n".join(lines)
 
 
 def format_no_action(actions: list, prices: dict) -> str:
     now = datetime.now(timezone.utc).strftime("%a %d %b · %H:%M UTC")
-    lines = [f"🟡 NO ACTION — {now}", ""]
-    lines.append("Agent ran and reviewed all positions. No high-conviction signal found.")
-    if actions:
+    lines = [
+        f"🟡 *NO ACTION*",
+        now,
+        "",
+        "No high-conviction signal found. All positions reviewed:",
+        "─────────────────────",
+    ]
+    for a in actions:
+        ticker = a["ticker"]
+        pl = _price_line(ticker, prices)
+        note = a.get("reasoning", "Holding.")
+        lines.append(f"*{ticker}*  {pl}")
+        lines.append(note)
         lines.append("")
-        lines.append("Positions reviewed:")
-        for a in actions:
-            ticker = a["ticker"]
-            price_data = prices.get(ticker, {})
-            raw_price = price_data.get("price", None)
-            price = f"€{raw_price:.2f}" if raw_price is not None else "N/A"
-            pct = price_data.get("pct_change", 0)
-            pct_str = f"+{pct:.1f}%" if pct >= 0 else f"{pct:.1f}%"
-            note = a.get("reasoning", "Holding.")
-            lines.append(f"  • {ticker} {price} ({pct_str}) — {note}")
-    lines.append("")
+    lines.append("─────────────────────")
     lines.append("Reply /reason to see last active signal")
     return "\n".join(lines)
 
