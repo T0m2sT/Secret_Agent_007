@@ -1,9 +1,10 @@
 {
-  "cash": 100.3,
+  "cash": 100.0,
   "holdings": [],
   "watchlist": [
     "SPY",
     "QQQ",
+    "NVDA",
     "TSLA",
     "MSFT",
     "META",
@@ -11,14 +12,5 @@
   ],
   "last_run": null,
   "last_alert": null,
-  "trade_log": [
-    {
-      "ticker": "NVDA",
-      "shares": 0.2,
-      "avg_buy_price": 135.5,
-      "sell_price": 137.0,
-      "pnl": 0.3,
-      "closed_at": "2026-04-21 15:50 UTC"
-    }
-  ]
+  "trade_log": []
 }
