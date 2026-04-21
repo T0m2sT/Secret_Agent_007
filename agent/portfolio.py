@@ -47,13 +47,17 @@ def apply_action(portfolio: dict, action: dict) -> dict:
             pct = float(amount.replace("%", "")) / 100
             sell_shares = holding["shares"] * pct
         sell_shares = min(sell_shares, holding["shares"])
-        cash += sell_shares * price
-        pnl = round((price - holding["avg_buy_price"]) * sell_shares, 2)
+        gross_proceeds = sell_shares * price
+        fx_fee = round(gross_proceeds * 0.005, 4)  # Trading 212 0.5% FX fee
+        net_proceeds = gross_proceeds - fx_fee
+        cash += net_proceeds
+        pnl = round((price - holding["avg_buy_price"]) * sell_shares - fx_fee, 2)
         trade = {
             "ticker": ticker,
             "shares": round(sell_shares, 8),
             "avg_buy_price": holding["avg_buy_price"],
             "sell_price": price,
+            "fx_fee": fx_fee,
             "pnl": pnl,
             "closed_at": _now_utc(),
         }

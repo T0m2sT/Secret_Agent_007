@@ -146,7 +146,9 @@ def webhook():
                 for t in trades:
                     emoji = "🟢" if t["pnl"] >= 0 else "🔴"
                     pnl_str = f"+€{t['pnl']:.2f}" if t["pnl"] >= 0 else f"-€{abs(t['pnl']):.2f}"
-                    lines.append(f"{emoji} {t['ticker']} — {t['shares']} shares\n   Buy €{t['avg_buy_price']:.2f} → Sell €{t['sell_price']:.2f} | {pnl_str}\n   {t['closed_at']}")
+                    fx_fee = t.get("fx_fee", 0)
+                    fee_str = f" (−€{fx_fee:.4f} FX)" if fx_fee else ""
+                    lines.append(f"{emoji} {t['ticker']} — {t['shares']} shares\n   Buy €{t['avg_buy_price']:.4f} → Sell €{t['sell_price']:.4f}{fee_str} | {pnl_str}\n   {t['closed_at']}")
                 total_str = f"+€{total_pnl:.2f}" if total_pnl >= 0 else f"-€{abs(total_pnl):.2f}"
                 lines.append(f"\n*Total P&L: {total_str}*")
                 send(chat_id, "\n".join(lines))
