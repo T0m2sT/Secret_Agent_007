@@ -1,13 +1,6 @@
 {
-  "cash": 13.8,
-  "holdings": [
-    {
-      "ticker": "BB",
-      "shares": 15.67272727,
-      "avg_buy_price": 5.5,
-      "last_price": 5.5
-    }
-  ],
+  "cash": 100.0,
+  "holdings": [],
   "watchlist": [
     "SPY",
     "QQQ",
@@ -15,43 +8,9 @@
     "TSLA",
     "MSFT",
     "META",
-    "AMZN",
-    "CAR",
-    "TTD",
-    "ARM",
-    "AAPL",
-    "CRDO",
-    "NVTS"
+    "AMZN"
   ],
-  "last_run": "2026-04-21T13:12:23.576479+00:00",
-  "last_alert": {
-    "ticker": "BB",
-    "action": "HOLD",
-    "reasoning": "BB is flat on the day at exactly the average cost basis price, showing no new catalyst in either direction. The position is up 13.2% in underlying terms but that gain appears to reflect prior move already captured in the avg price notation. Without a specific fundamental catalyst \u2014 earnings surprise, contract win, or sector rotation into cybersecurity/IoT \u2014 there is no reason to add or trim here. Holding is appropriate.",
-    "all_actions": [
-      {
-        "ticker": "BB",
-        "action": "HOLD",
-        "reasoning": "BB is flat on the day at exactly the average cost basis price, showing no new catalyst in either direction. The position is up 13.2% in underlying terms but that gain appears to reflect prior move already captured in the avg price notation. Without a specific fundamental catalyst \u2014 earnings surprise, contract win, or sector rotation into cybersecurity/IoT \u2014 there is no reason to add or trim here. Holding is appropriate."
-      }
-    ]
-  },
-  "trade_log": [
-    {
-      "ticker": "BYND",
-      "shares": 74.31034483,
-      "avg_buy_price": 1.16,
-      "sell_price": 1.16,
-      "pnl": 0.0,
-      "closed_at": "2026-04-21 05:59 UTC"
-    },
-    {
-      "ticker": "PLUG",
-      "shares": 4.28571429,
-      "avg_buy_price": 3.22,
-      "sell_price": 3.22,
-      "pnl": 0.0,
-      "closed_at": "2026-04-21 09:20 UTC"
-    }
-  ]
+  "last_run": null,
+  "last_alert": null,
+  "trade_log": []
 }
