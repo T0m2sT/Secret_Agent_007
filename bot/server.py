@@ -4,6 +4,7 @@ import base64
 import logging
 import anthropic
 import requests
+import yfinance as yf
 from flask import Flask, request
 from agent.portfolio import apply_action
 
@@ -37,6 +38,16 @@ def send(chat_id: str, text: str) -> None:
             logger.error("Telegram error: %s", resp.json().get("description"))
     except requests.RequestException as exc:
         logger.error("Failed to send message: %r", exc)
+
+
+def get_eurusd() -> float:
+    try:
+        hist = yf.Ticker("EURUSD=X").history(period="5d")
+        if hist.empty:
+            return 1.0
+        return float(hist["Close"].iloc[-1])
+    except Exception:
+        return 1.0
 
 
 def get_portfolio() -> dict:
@@ -171,32 +182,34 @@ def webhook():
         elif text.startswith("/buy"):
             parts = text.split()
             if len(parts) != 4:
-                send(chat_id, "Usage: `/buy TICKER SHARES PRICE`\nExample: `/buy NVDA 2 118.40`")
+                send(chat_id, "Usage: `/buy TICKER SHARES PRICE_USD`\nExample: `/buy NVDA 2 118.40`\n_Price is in USD — converted to EUR automatically._")
             else:
                 _, ticker, shares_str, price_str = parts
                 ticker = ticker.upper()
                 try:
                     shares = float(shares_str)
-                    price = float(price_str)
-                    if shares <= 0 or price <= 0:
+                    price_usd = float(price_str)
+                    if shares <= 0 or price_usd <= 0:
                         raise ValueError
                 except ValueError:
                     send(chat_id, "⚠️ Shares and price must be positive numbers.")
                 else:
+                    eurusd = get_eurusd()
+                    price_eur = round(price_usd / eurusd, 4)
                     portfolio = get_portfolio()
-                    cost = round(shares * price, 2)
+                    cost = round(shares * price_eur, 2)
                     if cost > portfolio["cash"]:
-                        send(chat_id, f"⚠️ Not enough cash. You have €{portfolio['cash']:.2f}, this costs €{cost:.2f}.")
+                        send(chat_id, f"⚠️ Not enough cash. You have €{portfolio['cash']:.2f}, this costs €{cost:.2f} (${price_usd:.2f} @ {eurusd:.4f}).")
                     else:
-                        action = {"action": "BUY", "ticker": ticker, "amount": str(cost), "last_price": price}
+                        action = {"action": "BUY", "ticker": ticker, "amount": str(cost), "last_price": price_eur}
                         updated = apply_action(portfolio, action)
                         save_portfolio_github(updated)
-                        send(chat_id, f"✅ *BUY recorded*\n{shares} shares of {ticker} @ €{price:.2f}\nCost: €{cost:.2f} | Cash left: €{updated['cash']:.2f}")
+                        send(chat_id, f"✅ *BUY recorded*\n{shares} shares of {ticker} @ ${price_usd:.2f} → €{price_eur:.4f}\nCost: €{cost:.2f} | Cash left: €{updated['cash']:.2f}")
 
         elif text.startswith("/sell"):
             parts = text.split()
             if len(parts) not in (3, 4):
-                send(chat_id, "Usage: `/sell TICKER AMOUNT [PRICE]`\nExamples:\n`/sell NVDA 50% 191.20`\n`/sell NVDA ALL 191.20`\n`/sell NVDA 50%` (uses last known price)")
+                send(chat_id, "Usage: `/sell TICKER AMOUNT PRICE_USD`\nExamples:\n`/sell NVDA 50% 191.20`\n`/sell NVDA ALL 191.20`\n_Price is in USD — converted to EUR automatically._")
             else:
                 _, ticker, amount = parts[0], parts[1], parts[2]
                 price_str = parts[3] if len(parts) == 4 else None
@@ -205,15 +218,17 @@ def webhook():
                 if amount_up != "ALL" and not (amount_up.endswith("%") and amount_up[:-1].replace(".", "").isdigit()):
                     send(chat_id, "⚠️ Amount must be a percentage like `50%` or `ALL`.\nExample: `/sell NVDA 50% 191.20`")
                 else:
-                    override_price = None
+                    override_price_eur = None
+                    price_usd = None
                     if price_str is not None:
                         try:
-                            override_price = float(price_str)
-                            if override_price <= 0:
+                            price_usd = float(price_str)
+                            if price_usd <= 0:
                                 raise ValueError
+                            eurusd = get_eurusd()
+                            override_price_eur = round(price_usd / eurusd, 4)
                         except ValueError:
                             send(chat_id, "⚠️ Price must be a positive number.")
-                            override_price = None
                             amount_up = None
                     if amount_up is not None:
                         portfolio = get_portfolio()
@@ -221,11 +236,12 @@ def webhook():
                         if not holding:
                             send(chat_id, f"⚠️ You don't hold {ticker}.")
                         else:
-                            price = override_price if override_price is not None else holding["last_price"]
-                            action = {"action": "SELL", "ticker": ticker, "amount": amount_up, "last_price": price}
+                            price_eur = override_price_eur if override_price_eur is not None else holding["last_price"]
+                            action = {"action": "SELL", "ticker": ticker, "amount": amount_up, "last_price": price_eur}
                             updated = apply_action(portfolio, action)
                             save_portfolio_github(updated)
-                            send(chat_id, f"✅ *SELL recorded*\n{ticker} {amount_up} @ €{price:.2f} | Cash now: €{updated['cash']:.2f}")
+                            usd_str = f" (${price_usd:.2f})" if price_usd else ""
+                            send(chat_id, f"✅ *SELL recorded*\n{ticker} {amount_up} @ €{price_eur:.4f}{usd_str} | Cash now: €{updated['cash']:.2f}")
 
     except Exception as exc:
         logger.error("Webhook handler error: %r", exc)
