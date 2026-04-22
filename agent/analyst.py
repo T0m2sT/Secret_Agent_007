@@ -13,7 +13,7 @@ The investor uses Trading 212, which supports:
 - Market and limit orders for both BUY and SELL
 - Instant execution during US market hours (14:30–21:00 UTC weekdays)
 - Outside market hours: orders queue and execute at open
-- SELL signals are fully actionable — the investor can sell any portion of any holding at any time, including partial sells by percentage or by euro value
+- SELL signals are fully actionable — the investor can sell any portion of any holding or any stock he is not holding at any time, including partial sells by percentage or by euro value
 Do NOT discount or soften SELL signals on the assumption the investor cannot act on them.
 
 ## YOUR JOB
@@ -65,7 +65,7 @@ def build_prompt(portfolio: dict, prices: dict, news: dict, trending: list[str] 
     lines.append("Current holdings:")
     for h in portfolio["holdings"]:
         price_data = prices.get(h["ticker"], {})
-        current = price_data.get("price", h["last_price"])
+        current = price_data.get("price", h["last_price_usd"])
         pct = price_data.get("pct_change", 0)
         headlines = news.get(h["ticker"], [])
         lines.append(f"  {h['ticker']}: {h['shares']} shares @ avg €{h['avg_buy_price']:.2f}, now €{current:.2f} ({pct:+.1f}%)")
