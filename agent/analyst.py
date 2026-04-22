@@ -68,7 +68,8 @@ def build_prompt(portfolio: dict, prices: dict, news: dict, trending: list[str] 
         current = price_data.get("price", h["last_price_usd"])
         pct = price_data.get("pct_change", 0)
         headlines = news.get(h["ticker"], [])
-        lines.append(f"  {h['ticker']}: {h['shares']} shares @ avg €{h['avg_buy_price']:.2f}, now €{current:.2f} ({pct:+.1f}%)")
+        avg_buy_price = h["total_cost_eur"] / h["shares"] if h["shares"] > 0 else 0
+        lines.append(f"  {h['ticker']}: {h['shares']} shares @ avg €{avg_buy_price:.2f}, now €{current:.2f} ({pct:+.1f}%)")
         for hl in headlines:
             lines.append(f"    - {hl}")
     lines.append("\nWatchlist (not held):")

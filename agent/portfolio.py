@@ -24,7 +24,8 @@ def save_portfolio(portfolio: dict, path: str = PORTFOLIO_PATH) -> None:
 
 
 def compute_pnl(holding: dict) -> float:
-    return (holding["last_price"] - holding["avg_buy_price"]) * holding["shares"]
+    avg_buy_price = holding["total_cost_eur"] / holding["shares"] if holding["shares"] > 0 else 0
+    return (holding["last_price_usd"] - avg_buy_price) * holding["shares"]
 
 
 def apply_action(portfolio: dict, action: dict) -> dict:
