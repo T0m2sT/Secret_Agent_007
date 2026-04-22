@@ -34,7 +34,7 @@ def fetch_trending_tickers(limit: int = 10) -> list[str]:
 def fetch_prices(tickers: list[str]) -> dict[str, dict]:
     """Fetch prices from Yahoo Finance using recent history (works market-open and closed).
 
-    Returns a mapping of ticker -> {"price": float, "pct_change": float}.
+    Returns a mapping of ticker -> {"price": float (USD), "pct_change": float}.
     Tickers with missing data are silently skipped.
     Never raises — returns an empty dict on complete failure.
     """

@@ -60,16 +60,31 @@ Action rules:
 def build_prompt(portfolio: dict, prices: dict, news: dict, trending: list[str] | None = None) -> str:
     held = {h["ticker"] for h in portfolio["holdings"]}
     watched = set(portfolio["watchlist"])
-
+    
+    # Calculate total portfolio value and apply overnight interest
+    total_value_usd = 0
+    for h in portfolio["holdings"]:
+        price_data = prices.get(h["ticker"], {})
+        current_price = price_data.get("price", 0)
+        total_value_usd += current_price * h["shares"]
+    
+    # Add cash (assuming portfolio["cash"] is in EUR, convert to approximate USD)
+    total_value_usd += portfolio["cash"] * 1.09  # rough EUR to USD conversion
+    
+    # Apply overnight interest: 0.0694% = 0.000694
+    interest_charge = total_value_usd * 0.000694
+    
     lines = [f"Available cash: €{portfolio['cash']:.2f}\n"]
+    lines.append(f"Overnight interest charge: ${interest_charge:.4f}\n")
     lines.append("Current holdings:")
     for h in portfolio["holdings"]:
         price_data = prices.get(h["ticker"], {})
-        current = price_data.get("price", h["last_price_usd"])
+        current_usd = price_data.get("price", 0)
         pct = price_data.get("pct_change", 0)
         headlines = news.get(h["ticker"], [])
-        avg_buy_price = h["total_cost_eur"] / h["shares"] if h["shares"] > 0 else 0
-        lines.append(f"  {h['ticker']}: {h['shares']} shares @ avg €{avg_buy_price:.2f}, now €{current:.2f} ({pct:+.1f}%)")
+        avg_buy_price_usd = h.get("avg_buy_price_usd", 0)
+        pct_since_buy = ((current_usd - avg_buy_price_usd) / avg_buy_price_usd * 100) if avg_buy_price_usd > 0 else 0
+        lines.append(f"  {h['ticker']}: {h['shares']} shares @ avg ${avg_buy_price_usd:.2f}, now ${current_usd:.2f} ({pct_since_buy:+.1f}%)")
         for hl in headlines:
             lines.append(f"    - {hl}")
     lines.append("\nWatchlist (not held):")

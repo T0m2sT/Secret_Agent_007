@@ -24,8 +24,8 @@ def save_portfolio(portfolio: dict, path: str = PORTFOLIO_PATH) -> None:
 
 
 def compute_pnl(holding: dict) -> float:
-    avg_buy_price = holding["total_cost_eur"] / holding["shares"] if holding["shares"] > 0 else 0
-    return (holding["last_price_usd"] - avg_buy_price) * holding["shares"]
+    avg_buy_price_usd = holding.get("avg_buy_price_usd", 0)
+    return (holding["last_price_usd"] - avg_buy_price_usd) * holding["shares"]
 
 
 def apply_action(portfolio: dict, action: dict) -> dict:
@@ -79,7 +79,7 @@ def apply_action(portfolio: dict, action: dict) -> dict:
 
     if action["action"] == "BUY":
         shares = action["shares"]
-        price_usd = action["price_usd"]
+        price_usd = action["price_usd"]  # avg_buy_price_usd from /buy command
         cost_eur = action["cost_eur"]
         cash -= cost_eur
         existing = next((h for h in holdings if h["ticker"] == ticker), None)
@@ -87,7 +87,7 @@ def apply_action(portfolio: dict, action: dict) -> dict:
             total_shares = existing["shares"] + shares
             total_cost = existing["total_cost_eur"] + cost_eur
             holdings = [
-                {**h, "shares": round(total_shares, 8), "total_cost_eur": round(total_cost, 4), "last_price_usd": price_usd}
+                {**h, "shares": round(total_shares, 8), "total_cost_eur": round(total_cost, 4)}
                 if h["ticker"] == ticker else h
                 for h in holdings
             ]
@@ -96,7 +96,7 @@ def apply_action(portfolio: dict, action: dict) -> dict:
                 "ticker": ticker,
                 "shares": round(shares, 8),
                 "total_cost_eur": round(cost_eur, 4),
-                "last_price_usd": price_usd,
+                "avg_buy_price_usd": round(price_usd, 2),
             })
         watchlist = [t for t in portfolio["watchlist"] if t != ticker]
         return {**portfolio, "holdings": holdings, "cash": round(cash, 2), "watchlist": watchlist}
