@@ -11,7 +11,7 @@ EMOJI = {"SELL": "🔴", "BUY": "🟢", "HOLD": "🟡"}
 def _price_line(ticker: str, prices: dict) -> str:
     price_data = prices.get(ticker, {})
     raw_price = price_data.get("price", None)
-    price = f"€{raw_price:.2f}" if raw_price is not None else "N/A"
+    price = f"${raw_price:.2f}" if raw_price is not None else "N/A"
     pct = price_data.get("pct_change", 0)
     pct_str = f"+{pct:.1f}%" if pct >= 0 else f"{pct:.1f}%"
     return f"{price}  {pct_str}"
@@ -92,9 +92,9 @@ def format_portfolio(portfolio: dict) -> str:
     lines.append(f"💵 Cash: €{portfolio['cash']:.2f}")
     lines.append("\n*Holdings:*")
     for h in portfolio["holdings"]:
-        pnl = (h["last_price"] - h["avg_buy_price"]) * h["shares"]
-        pnl_str = f"+€{pnl:.2f}" if pnl >= 0 else f"-€{abs(pnl):.2f}"
-        lines.append(f"  {h['ticker']}: {h['shares']} shares @ €{h['avg_buy_price']:.2f} | P&L: {pnl_str}")
+        avg_price = h.get("avg_buy_price_usd", 0)
+        cost = h.get("total_cost_eur", 0)
+        lines.append(f"  {h['ticker']}: {h['shares']} shares | Avg: ${avg_price:.2f} | Cost: €{cost:.2f}")
     if portfolio.get("watchlist"):
         lines.append(f"\n👀 Watching: {', '.join(portfolio['watchlist'])}")
     if portfolio.get("last_run"):

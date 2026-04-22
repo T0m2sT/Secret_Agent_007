@@ -119,7 +119,8 @@ def webhook():
             portfolio = get_portfolio()
             lines = [f"📊 *Portfolio*\n💵 Cash: €{portfolio['cash']:.2f}\n\n*Holdings:*"]
             for h in portfolio.get("holdings", []):
-                lines.append(f"  {h['ticker']}: {h['shares']} shares | Cost: €{h['total_cost_eur']:.2f} | Last: ${h['last_price_usd']:.2f}")
+                avg_price = h.get("avg_buy_price_usd", 0)
+                lines.append(f"  {h['ticker']}: {h['shares']} shares | Avg: ${avg_price:.2f} | Cost: €{h['total_cost_eur']:.2f}")
             if portfolio.get("watchlist"):
                 lines.append(f"\n👀 Watching: {', '.join(portfolio['watchlist'])}")
             send(chat_id, "\n".join(lines))
