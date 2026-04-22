@@ -153,13 +153,15 @@ def webhook():
             send(chat_id, "🔄 Portfolio reset to €100.00 cash, no holdings.")
 
         elif text == "/status":
-            from datetime import datetime, timezone, timedelta
+            from datetime import datetime
+            from zoneinfo import ZoneInfo
             portfolio = get_portfolio()
             last_run = portfolio.get("last_run", "Never")
-            now = datetime.now(timezone.utc)
-            lisbon = timezone(timedelta(hours=1))
-
-            # New schedule: 00:00, 10:00, 16:00, 21:00 UTC
+            
+            lisbon_tz = ZoneInfo("Europe/Lisbon")
+            now = datetime.now(lisbon_tz)
+            
+            # Lisbon schedule
             schedule = [0, 10, 16, 21]
             today = now.replace(hour=0, minute=0, second=0, microsecond=0)
             
@@ -172,11 +174,10 @@ def webhook():
                     break
             
             if not next_run:
-                next_run = (today + timedelta(days=1)).replace(hour=schedule[0])
+                next_run = (today + datetime.timedelta(days=1)).replace(hour=schedule[0])
 
             mins_away = int((next_run - now).total_seconds() / 60)
-            next_run_local = next_run.astimezone(lisbon)
-            send(chat_id, f"🕐 Last run: {last_run}\n⏭ Next run: {next_run_local.strftime('%H:%M Lisbon')} (in {mins_away}m)")
+            send(chat_id, f"🕐 Last run: {last_run}\n⏭ Next run: {next_run.strftime('%H:%M Lisbon')} (in {mins_away}m)")
 
         elif text.startswith("/buy"):
             parts = text.split()
