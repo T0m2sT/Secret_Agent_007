@@ -21,7 +21,7 @@ def test_format_alert_hold():
     msg = format_alert(action, prices)
     assert "HOLD" in msg
     assert "SPY" in msg
-    assert "/reason" in msg
+    assert "No action needed" in msg
 
 def test_format_alert_buy():
     action = {"ticker": "TSLA", "action": "BUY", "amount": "23.40", "headline": "Tesla new model launch", "reasoning": "Momentum building."}
@@ -33,14 +33,14 @@ def test_format_alert_buy():
 def test_format_portfolio():
     portfolio = {
         "cash": 23.40,
-        "holdings": [{"ticker": "NVDA", "shares": 0.25, "avg_buy_price": 110.00, "last_price": 118.40}],
+        "holdings": [{"ticker": "NVDA", "shares": 0.25, "avg_buy_price_usd": 110.00, "total_cost_eur": 25.00}],
         "watchlist": ["AMD"],
         "last_run": "2026-04-20T12:00:00+00:00"
     }
     msg = format_portfolio(portfolio)
     assert "NVDA" in msg
     assert "23.40" in msg
-    assert "P&L" in msg
+    assert "shares" in msg
 
 
 def test_send_message_success(mocker):

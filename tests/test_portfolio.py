@@ -29,7 +29,7 @@ def test_save_portfolio(tmp_path):
     assert "T" in loaded["last_run"]
 
 def test_compute_pnl():
-    holding = {"ticker": "NVDA", "shares": 0.25, "avg_buy_price": 110.00, "last_price": 118.40}
+    holding = {"ticker": "NVDA", "shares": 0.25, "avg_buy_price_usd": 110.00, "last_price_usd": 118.40}
     pnl = compute_pnl(holding)
     assert round(pnl, 2) == 2.10
 
@@ -42,20 +42,20 @@ def test_apply_action_hold():
 def test_apply_action_sell_partial():
     portfolio = {
         "cash": 0.00,
-        "holdings": [{"ticker": "NVDA", "shares": 1.0, "avg_buy_price": 100.00, "last_price": 120.00}],
+        "holdings": [{"ticker": "NVDA", "shares": 1.0, "avg_buy_price_usd": 100.00, "total_cost_eur": 100.00}],
         "watchlist": [], "last_run": None, "last_alert": None
     }
-    result = apply_action(portfolio, {"ticker": "NVDA", "action": "SELL", "amount": "50%", "last_price": 120.00})
+    result = apply_action(portfolio, {"ticker": "NVDA", "action": "SELL", "amount": "50%", "price_usd": 120.00, "proceeds_eur": 60.00})
     assert round(result["cash"], 2) == 60.00
     assert round(result["holdings"][0]["shares"], 4) == 0.5
 
 def test_apply_action_sell_all():
     portfolio = {
         "cash": 0.00,
-        "holdings": [{"ticker": "NVDA", "shares": 1.0, "avg_buy_price": 100.00, "last_price": 120.00}],
+        "holdings": [{"ticker": "NVDA", "shares": 1.0, "avg_buy_price_usd": 100.00, "total_cost_eur": 100.00}],
         "watchlist": [], "last_run": None, "last_alert": None
     }
-    result = apply_action(portfolio, {"ticker": "NVDA", "action": "SELL", "amount": "ALL", "last_price": 120.00})
+    result = apply_action(portfolio, {"ticker": "NVDA", "action": "SELL", "amount": "ALL", "price_usd": 120.00, "proceeds_eur": 120.00})
     assert round(result["cash"], 2) == 120.00
     assert len(result["holdings"]) == 0
 
@@ -65,7 +65,7 @@ def test_apply_action_buy():
         "holdings": [],
         "watchlist": ["TSLA"], "last_run": None, "last_alert": None
     }
-    result = apply_action(portfolio, {"ticker": "TSLA", "action": "BUY", "amount": "23.40", "last_price": 234.00})
+    result = apply_action(portfolio, {"ticker": "TSLA", "action": "BUY", "shares": 0.1, "price_usd": 234.00, "cost_eur": 23.40})
     assert round(result["cash"], 2) == 26.60
     assert result["holdings"][0]["ticker"] == "TSLA"
     assert round(result["holdings"][0]["shares"], 4) == 0.1
