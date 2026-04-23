@@ -16,6 +16,7 @@ def run() -> None:
     telegram_token = os.environ["TELEGRAM_BOT_TOKEN"]
     telegram_chat_id = os.environ["TELEGRAM_CHAT_ID"]
     news_api_key = os.environ["NEWS_API_KEY"]
+    finnhub_key = os.environ.get("FINNHUB_API_KEY")
 
     try:
         logger.info("Loading portfolio state")
@@ -32,7 +33,7 @@ def run() -> None:
 
         buzz_tickers = [t for t in trending if t not in all_tickers]
         logger.info("Fetching prices and news for: %s", all_tickers + buzz_tickers)
-        prices = fetch_prices(all_tickers + buzz_tickers)
+        prices = fetch_prices(all_tickers + buzz_tickers, api_key=finnhub_key)
         news = fetch_news(all_tickers + buzz_tickers, api_key=news_api_key)
 
         logger.info("Calling Claude analyst")
