@@ -2,6 +2,7 @@ import logging
 import requests
 import yfinance as yf
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 logger = logging.getLogger(__name__)
 
@@ -32,27 +33,33 @@ def fetch_trending_tickers(limit: int = 10) -> list[str]:
         return []
 
 
-def is_market_open(api_key: str = None) -> bool:
-    """Check if the US market is open today (not a weekend or holiday).
+def is_us_trading_day(api_key: str = None) -> bool:
+    """Check if today is a US trading day (not a weekend or public holiday).
 
-    Uses Finnhub's market status endpoint when an API key is available,
-    otherwise falls back to a weekday check only.
+    Uses NY date for correctness. Checks Finnhub's holiday calendar when an
+    API key is available. Falls back to weekday-only check on failure.
     """
+    ny_now = datetime.now(ZoneInfo("America/New_York"))
+    today = ny_now.date()
+
+    if today.weekday() >= 5:
+        return False
+
     if api_key:
         try:
             resp = requests.get(
-                f"{_FINNHUB_URL}/stock/market-status",
+                f"{_FINNHUB_URL}/stock/market-holiday",
                 params={"exchange": "US", "token": api_key},
                 timeout=10,
             )
             if resp.status_code == 200:
-                data = resp.json()
-                # isOpen reflects whether the exchange has a session today
-                return bool(data.get("isOpen", True))
-        except Exception as exc:
-            logger.warning("is_market_open check failed: %r — assuming open", exc)
-    # Fallback: skip weekends only
-    return datetime.now(timezone.utc).weekday() < 5
+                holidays = resp.json().get("data", [])
+                holiday_dates = {h.get("atDate") for h in holidays}
+                return today.isoformat() not in holiday_dates
+        except Exception:
+            pass
+
+    return True
 
 
 def fetch_prices(tickers: list[str], api_key: str = None) -> dict[str, dict]:

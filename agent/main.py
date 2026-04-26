@@ -2,7 +2,7 @@ import os
 import logging
 from dotenv import load_dotenv
 from agent.portfolio import load_portfolio, save_portfolio
-from agent.fetcher import fetch_prices, fetch_news, fetch_trending_tickers, is_market_open
+from agent.fetcher import fetch_prices, fetch_news, fetch_trending_tickers, is_us_trading_day
 from agent.analyst import analyse
 from agent.notifier import format_alert, format_no_action, send_message
 
@@ -19,8 +19,8 @@ def run() -> None:
     finnhub_key = os.environ.get("FINNHUB_API_KEY")
 
     try:
-        if not is_market_open(api_key=finnhub_key):
-            logger.info("Market closed today (holiday or weekend) — skipping run")
+        if not is_us_trading_day(api_key=finnhub_key):
+            logger.info("US market closed today — skipping run")
             return
 
         logger.info("Loading portfolio state")

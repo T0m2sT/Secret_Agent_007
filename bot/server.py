@@ -137,9 +137,10 @@ def webhook():
             clean = {
                 "cash": 100.0,
                 "holdings": [],
-                "watchlist": ["SPY", "QQQ", "NVDA", "TSLA", "MSFT", "META", "AMZN"],
+                "watchlist": ["NVDA", "TSLA", "MSFT", "META", "AMZN"],
                 "last_run": None,
                 "last_alert": None,
+                "ticker_signals": {},
                 "trade_log": [],
             }
             save_portfolio_github(clean)
