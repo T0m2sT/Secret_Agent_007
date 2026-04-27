@@ -1,6 +1,13 @@
 {
-  "cash": 99.57,
-  "holdings": [],
+  "cash": 69.58,
+  "holdings": [
+    {
+      "ticker": "QCM",
+      "shares": 2.66667,
+      "total_cost_eur": 29.99,
+      "avg_buy_price_usd": 13.2
+    }
+  ],
   "watchlist": [
     "NVDA",
     "TSLA",
