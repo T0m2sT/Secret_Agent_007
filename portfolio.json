@@ -7,162 +7,114 @@
     "MSFT",
     "META",
     "AMZN",
-    "SNAP"
+    "SNAP",
+    "DPZ"
   ],
-  "last_run": "2026-04-27T16:07:12.664329+00:00",
+  "last_run": "2026-04-27T16:26:22.480327+00:00",
   "last_alert": {
-    "ticker": "NTLA",
-    "action": "BUY",
+    "ticker": "NVDA",
+    "action": "HOLD",
     "confidence": "medium",
-    "headline": "Intellia Therapeutics Reports Positive Phase 3 Results in Hereditary Angioedema, Marking a Global First for In Vivo Gene Editing",
-    "reasoning": "NTLA is down -10.6% today to $13.97 despite reporting positive Phase 3 results for lonvoguran ziclumeran in hereditary angioedema \u2014 a global first for in vivo gene editing. This is a concrete, material, positive clinical milestone: the therapy met its primary endpoint in a Phase 3 trial, which is the key regulatory hurdle before NDA/BLA submission. The -10.6% decline on positive data is a classic 'sell the news' or profit-taking reaction, creating a potential mispricing. The 5-day range low of $13.42 provides nearby support. The Phase 3 success is a genuine thesis-confirming event for a gene editing platform company. Allocating \u20ac40 (40% of available cash) captures this asymmetric setup while managing risk given biotech volatility and the unusual negative price reaction to positive news.",
+    "headline": "No direct material catalyst; AMD downgrade by Northland is indirect sector noise",
+    "reasoning": "NVDA is up +1.0% today and +5.7% over 5 days, trading near the top of its 5-day range at $211.24, close to the $211.95 high. The Northland AMD downgrade citing 'chip rally running on fumes' is an indirect negative signal for the sector but not a direct NVDA catalyst. The DeepMind researcher raising $1.1B for Ineffable Intelligence is AI-sector positive but too distant from NVDA's near-term fundamentals to justify a BUY. With no cash deployed and only \u20ac100 available, a BUY here near the 5-day high with no fresh direct catalyst carries gap-down risk. HOLD pending a clearer entry or direct NVDA-specific catalyst.",
     "market_session": "regular",
     "all_actions": [
       {
         "ticker": "NVDA",
         "action": "HOLD",
-        "headline": "No direct NVDA catalyst; AMD downgrade by Northland and DeepMind funding are indirect signals",
+        "headline": "No direct material catalyst; AMD downgrade by Northland is indirect sector noise",
         "confidence": "medium",
-        "reasoning": "NVDA is up +0.8% today and +5.5% over 5 days, trading near the top of its 5-day range at $210.84. The Northland AMD downgrade citing a 'chip rally running on fumes' is a mild indirect negative for the sector, but NVDA has no direct negative catalyst. The DeepMind $1.1B raise is a positive AI-demand signal but not NVDA-specific. The Cantor WDC price target raise is unrelated. With only \u20ac100 cash available and no current holdings, a BUY is possible but the AMD downgrade introduces sector caution. Holding watchlist status pending a clearer entry catalyst or pullback toward $200 support."
+        "reasoning": "NVDA is up +1.0% today and +5.7% over 5 days, trading near the top of its 5-day range at $211.24, close to the $211.95 high. The Northland AMD downgrade citing 'chip rally running on fumes' is an indirect negative signal for the sector but not a direct NVDA catalyst. The DeepMind researcher raising $1.1B for Ineffable Intelligence is AI-sector positive but too distant from NVDA's near-term fundamentals to justify a BUY. With no cash deployed and only \u20ac100 available, a BUY here near the 5-day high with no fresh direct catalyst carries gap-down risk. HOLD pending a clearer entry or direct NVDA-specific catalyst."
       },
       {
         "ticker": "TSLA",
         "action": "HOLD",
-        "headline": "Elon Musk delivers 'great news' but analyst caution advises against rushing to buy",
+        "headline": "Elon Musk solar energy comments; no concrete Tesla business catalyst",
         "confidence": "low",
-        "reasoning": "TSLA is down -1.3% today and -4.5% over 5 days, continuing a near-term downtrend from $393.95. The headline 'Elon Musk Just Delivered Great News for Tesla, but Don't Rush to Buy the Stock' is vague and explicitly cautionary \u2014 it does not describe a concrete, quantifiable positive catalyst. The solar panel commentary is unrelated to near-term financials. The Ford comparison article is sector-generic. No earnings beat, guidance raise, or product launch is confirmed. With a weakening 5-day trend and no concrete bullish catalyst, this is a HOLD on the watchlist with no entry justified."
+        "reasoning": "TSLA is down -0.8% today and -4.0% over 5 days, continuing its near-term downtrend from $393.95 to $371.02. The headlines present no concrete, quantifiable positive catalyst \u2014 the Musk solar panel comment is unrelated to Tesla's core auto or AI business, and the 'AI Bet vs. Ford Truck Fortress' piece is speculative editorial. The 'Don't Rush to Buy' headline explicitly cautions against entry. The downtrend is intact but there is no thesis-breaking negative event to justify a short. With no position held and only \u20ac100 cash, opening a short on a stock in a broad downtrend without a fresh specific negative catalyst is insufficient. HOLD watchlist position."
       },
       {
         "ticker": "MSFT",
         "action": "HOLD",
-        "headline": "Microsoft-OpenAI agreement amendment is notable but details are unclear; UK antitrust lawsuit is a mild negative",
+        "headline": "UK antitrust lawsuit from Slack over Teams bundling is a concrete but manageable negative",
         "confidence": "medium",
-        "reasoning": "MSFT is essentially flat today (-0.2%) and over 5 days (-0.3%), trading at $422.85 within a tight range. The Microsoft-OpenAI agreement amendment could be positive (deeper AI integration) or neutral depending on terms, but no concrete financial impact is described \u2014 this is insufficient as a BUY catalyst. The UK antitrust lawsuit from Slack over Teams bundling is a concrete negative regulatory event, though historically such EU/UK actions result in fines rather than structural remedies for MSFT. Data center cost surge (+66% natural gas costs) is a margin headwind. Net assessment: mixed signals, no strong directional edge. HOLD watchlist."
+        "reasoning": "MSFT is essentially flat today (+0.1%) and over 5 days (-0.1%), trading at $423.81 within a tight range. The UK antitrust lawsuit from Slack over Teams bundling is a concrete negative event \u2014 regulatory risk in a key product line \u2014 but MSFT has navigated similar antitrust actions historically and Teams revenue is not the primary earnings driver. The Microsoft-OpenAI agreement amendment is a mild positive for AI integration depth. The data center natural gas cost surge is a sector-wide margin headwind but not MSFT-specific. No position is held and no strong directional edge exists to open a short or long here. HOLD."
       },
       {
         "ticker": "META",
         "action": "HOLD",
-        "headline": "China blocks Meta's $2B acquisition of AI startup Manus \u2014 concrete negative but limited financial magnitude",
+        "headline": "China blocks Meta's $2B Manus acquisition; Shaq headline is noise",
         "confidence": "medium",
-        "reasoning": "META is up +0.2% today and +0.9% over 5 days, near the top of its 5-day range at $675.02. China blocking the $2B Manus acquisition is a concrete negative event \u2014 it eliminates a specific AI capability acquisition and signals continued geopolitical friction for META in China. However, $2B is less than 0.5% of META's market cap and China is already a minimal revenue contributor due to existing restrictions. The Shaquille O'Neal headline is noise. The Microsoft/OpenAI midday story is not META-specific. The stock's resilience near 5-day highs despite this news suggests the market has absorbed it. HOLD watchlist \u2014 no strong entry or short catalyst."
+        "reasoning": "META is up +0.3% today and +0.9% over 5 days at $675.14, near the top of its 5-day range. The China blocking of the $2B Manus acquisition remains the key concrete negative \u2014 it eliminates a specific AI capability acquisition and signals continued geopolitical friction for META's AI strategy. However, $2B is small relative to META's market cap and the stock has absorbed this news without breaking down. The Shaq headline is pure noise with no business relevance. No new bullish catalyst has emerged to justify a BUY near the 5-day high. HOLD watchlist position."
       },
       {
         "ticker": "AMZN",
         "action": "HOLD",
-        "headline": "Amazon Is a Strong Buy as Cloud Unit Reignites Growth Story",
+        "headline": "Amazon Strong Buy rating on AWS cloud growth reignition",
         "confidence": "medium",
-        "reasoning": "AMZN is down -0.8% today but up +4.7% over 5 days, trading at $261.57 near the top of its 5-day range. The 'Strong Buy' cloud growth headline is a positive fundamental signal \u2014 AWS re-acceleration is a well-documented thesis driver. However, the Bridgewater CIO warning that AI poses an existential threat to software firms introduces uncertainty about whether cloud incumbents benefit or face disruption. The Shaquille O'Neal headline is noise. With only \u20ac100 cash available, a small BUY is technically possible but the -0.8% intraday move and the existential AI threat commentary warrant caution. HOLD watchlist pending earnings confirmation of AWS growth."
-      },
-      {
-        "ticker": "POET",
-        "action": "SELL",
-        "amount": "50.00",
-        "headline": "POET Technologies Shares Plunge On Marvell Order Cancellation",
-        "confidence": "high",
-        "reasoning": "POET is down -37.7% today, trading at $8.07 from a 5-day high of $15.50 \u2014 a catastrophic single-session collapse. The Marvell order cancellation is a direct, concrete, quantifiable thesis-breaking event: POET's core business model depends on design wins and production orders from major semiconductor customers, and losing a Marvell order eliminates a primary revenue catalyst. This is not a broad market selloff \u2014 it is company-specific fundamental destruction. The stock is gapping down with confirmed news. Opening a short/bearish position of \u20ac50 is justified as the stock may continue declining as the full revenue impact is priced in. Regular session confirms the move is real and liquid."
+        "reasoning": "AMZN is down -0.4% today but up +5.2% over 5 days, trading at $262.80 near the top of its 5-day range ($264.50 high). The 'Strong Buy' AWS cloud growth headline is a positive fundamental signal but is analyst opinion rather than a concrete earnings event. The Bridgewater CIO comment that AI poses an existential threat to software firms is a macro headwind but vague and not AMZN-specific. With the stock near its 5-day high and only \u20ac100 available, buying near resistance without a fresh concrete catalyst (earnings, guidance raise) is poor risk/reward. HOLD watchlist position."
       },
       {
         "ticker": "SNAP",
         "action": "HOLD",
-        "headline": "SNAP up +6.9% today; Randian Capital open letter to board is activist signal but details unclear",
+        "headline": "Randian Capital open letter to Snap board; activist catalyst unconfirmed",
         "confidence": "low",
-        "reasoning": "SNAP is up +6.9% today and +9.8% over 5 days, trading at $6.19 near the top of its range. The Randian Capital open letter to the board is a potential activist catalyst, but without knowing the specific demands (sale, restructuring, management change), it cannot be assessed as a concrete positive. The ex-Snap exec named as Expedia CFO is not a SNAP catalyst. The stock has already moved significantly on this news. Chasing a +6.9% intraday move on an unclear activist letter in a low-priced, high-volatility stock is not justified. HOLD \u2014 add to watchlist for monitoring if activist demands become concrete."
-      },
-      {
-        "ticker": "DPZ",
-        "action": "SELL",
-        "amount": "50.00",
-        "headline": "DPZ gapping down -6.3% in S&P500 gapping stocks list \u2014 likely earnings or guidance miss",
-        "confidence": "medium",
-        "reasoning": "DPZ is down -6.3% today and -9.9% over 5 days, trading at $332.67 from a 5-day high of $375.42 \u2014 a significant breakdown. The stock appears in the 'Gapping S&P500 stocks' list, strongly suggesting an earnings or guidance event drove the move. However, the specific catalyst (earnings miss, guidance cut, or other) is not explicitly named in the provided headlines, which reduces confidence. The -6.3% single-day move on what appears to be a fundamental event, combined with a -9.9% 5-day trend, indicates sustained selling pressure. Opening a bearish position of \u20ac50 is justified given the confirmed price breakdown with apparent fundamental catalyst, though confidence is medium due to incomplete headline detail."
-      },
-      {
-        "ticker": "VZ",
-        "action": "HOLD",
-        "headline": "Verizon Rises After Earnings Beat and Upgraded Outlook",
-        "confidence": "medium",
-        "reasoning": "VZ is up +2.2% today and +4.0% over 5 days, trading at $48.14 near the top of its range. An earnings beat with upgraded outlook is a concrete positive fundamental catalyst. However, VZ is a defensive telecom stock with limited upside in a high-risk portfolio context \u2014 the stock is already near its 5-day high of $48.65 and the move is largely priced in intraday. With only \u20ac100 cash available, deploying capital into a low-growth telecom after a +2.2% post-earnings pop offers poor risk/reward for an aggressive strategy. HOLD watchlist \u2014 the thesis is intact but the entry point has passed for this session."
-      },
-      {
-        "ticker": "NOK",
-        "action": "HOLD",
-        "headline": "Nokia stock gaining \u2014 most active in today's session, but no specific catalyst identified",
-        "confidence": "low",
-        "reasoning": "NOK is up +0.8% today and +3.7% over 5 days, trading at $10.78. The headlines confirm it is among the most active stocks today and was gaining on Friday, but no specific catalyst (earnings, contract win, partnership) is named in the provided headlines. 'Most active' status without a named catalyst is insufficient for a BUY signal per the strategy rules. The 5-day trend is positive but the stock is near the top of its 5-day range ($11.30). HOLD watchlist \u2014 monitor for a concrete catalyst before entry."
-      },
-      {
-        "ticker": "XE",
-        "action": "HOLD",
-        "headline": "X-Energy Stock Opens 31% Above IPO Price As Amazon-Backed Nuclear Play Hits Nasdaq",
-        "confidence": "low",
-        "reasoning": "XE is up +3.9% today and +13.4% over 5 days, trading at $33.10 after opening 31% above its IPO price. The Amazon backing and nuclear energy theme are genuine positive catalysts \u2014 nuclear is a high-conviction AI data center power theme. However, XE is a recent IPO with limited price history, high volatility (5-day range $26.90\u2013$34.57), and the stock has already moved +13.4% in 5 days. IPO stocks in the first week carry extreme gap risk and thin fundamental data. With only \u20ac100 cash, the risk/reward of chasing a post-IPO momentum spike is unfavorable. HOLD watchlist \u2014 monitor for post-IPO stabilization before entry."
-      },
-      {
-        "ticker": "NTLA",
-        "action": "BUY",
-        "amount": "40.00",
-        "headline": "Intellia Therapeutics Reports Positive Phase 3 Results in Hereditary Angioedema, Marking a Global First for In Vivo Gene Editing",
-        "confidence": "medium",
-        "reasoning": "NTLA is down -10.6% today to $13.97 despite reporting positive Phase 3 results for lonvoguran ziclumeran in hereditary angioedema \u2014 a global first for in vivo gene editing. This is a concrete, material, positive clinical milestone: the therapy met its primary endpoint in a Phase 3 trial, which is the key regulatory hurdle before NDA/BLA submission. The -10.6% decline on positive data is a classic 'sell the news' or profit-taking reaction, creating a potential mispricing. The 5-day range low of $13.42 provides nearby support. The Phase 3 success is a genuine thesis-confirming event for a gene editing platform company. Allocating \u20ac40 (40% of available cash) captures this asymmetric setup while managing risk given biotech volatility and the unusual negative price reaction to positive news."
-      },
-      {
-        "ticker": "MANE",
-        "action": "HOLD",
-        "headline": "MANE up +18.5% today and +26.7% over 5 days \u2014 gapping stock with no specific catalyst named",
-        "confidence": "low",
-        "reasoning": "MANE is up +18.5% today, trading at $92.93 from a 5-day low of $65.80 \u2014 an extraordinary move. It appears in multiple 'gapping stocks' and 'top movers' lists, but no specific catalyst (earnings, contract, product news) is named in the provided headlines. Chasing a +18.5% intraday move on an unidentified catalyst in a small/mid-cap stock is extremely high risk \u2014 the move could reverse sharply if driven by speculation rather than fundamentals. Per strategy rules, trending status alone is not a BUY. HOLD watchlist \u2014 requires identification of the specific catalyst before any entry consideration."
+        "reasoning": "SNAP is up +6.6% today and +9.4% over 5 days, trading at $6.17 near the top of its range. The Randian Capital open letter is a potential activist catalyst but without confirmed demands, board response, or a specific value-unlock plan, it remains speculative. The Expedia naming an ex-Snap exec as CFO is irrelevant to SNAP's business. The stock has already moved +9.4% over 5 days, meaning much of the activist speculation may be priced in. With only \u20ac100 cash and low-confidence catalyst quality, chasing this move is not justified. HOLD watchlist position."
       }
     ],
     "risks": [
-      "Only \u20ac100 cash available severely limits position sizing \u2014 the NTLA BUY of \u20ac40 and POET short of \u20ac50 consume nearly all available capital, leaving minimal buffer for additional opportunities or margin calls.",
-      "DPZ SELL catalyst is inferred from 'gapping stocks' list membership rather than an explicitly named earnings/guidance event \u2014 confidence is medium, not high, due to this data gap.",
-      "NTLA's -10.6% decline on positive Phase 3 data is unusual and may signal undisclosed concerns (e.g., safety signals, commercial viability questions, or secondary offering risk) not captured in the provided headlines.",
-      "POET short position carries gap-risk if any positive news emerges (e.g., replacement order, partnership announcement) \u2014 the stock has already fallen -37.7% and short squeezes are possible at these levels.",
-      "XE is a recent IPO with very limited fundamental data and extreme volatility \u2014 the watchlist hold is appropriate but any future BUY signal should be treated with extra caution.",
-      "Multiple watchlist tickers (NVDA, TSLA, MSFT, META, AMZN) have no actionable entry given the \u20ac100 cash constraint \u2014 portfolio is effectively cash-constrained and cannot diversify meaningfully."
+      "Portfolio has \u20ac100 cash and no holdings \u2014 all actions are watchlist monitoring only; no capital is being deployed this session due to insufficient edge on any ticker relative to available funds.",
+      "NVDA and AMZN are both near 5-day highs with no fresh direct catalysts \u2014 buying near resistance with limited cash is poor risk/reward.",
+      "TSLA downtrend is intact but no specific negative catalyst justifies opening a short position at this time.",
+      "MSFT UK antitrust lawsuit risk is real but magnitude is uncertain and the stock has not broken down on the news.",
+      "SNAP activist catalyst (Randian Capital) is unconfirmed and speculative \u2014 the +9.4% 5-day move may already price in the open letter.",
+      "DPZ added to watchlist: Q1 earnings miss with CEO flagging weak consumer sentiment is a concrete negative catalyst; stock down -6.2% today and -9.8% over 5 days. Monitoring for potential short entry if downtrend confirms.",
+      "POET (-39.2% on Marvell order cancellation) and CMPX (-49.7%) are extreme movers but the thesis-breaking events are already fully priced intraday \u2014 no actionable edge for new short entry at these levels.",
+      "BTC-USD data is N/A \u2014 no actionable signal possible.",
+      "ARX.TO has no price data or headlines \u2014 cannot assess."
     ]
   },
   "ticker_signals": {
     "NVDA": {
       "action": "HOLD",
       "confidence": "medium",
-      "headline": "No direct NVDA catalyst; AMD downgrade by Northland and DeepMind funding are indirect signals",
-      "reasoning": "NVDA is up +0.8% today and +5.5% over 5 days, trading near the top of its 5-day range at $210.84. The Northland AMD downgrade citing a 'chip rally running on fumes' is a mild indirect negative for the sector, but NVDA has no direct negative catalyst. The DeepMind $1.1B raise is a positive AI-demand signal but not NVDA-specific. The Cantor WDC price target raise is unrelated. With only \u20ac100 cash available and no current holdings, a BUY is possible but the AMD downgrade introduces sector caution. Holding watchlist status pending a clearer entry catalyst or pullback toward $200 support.",
+      "headline": "No direct material catalyst; AMD downgrade by Northland is indirect sector noise",
+      "reasoning": "NVDA is up +1.0% today and +5.7% over 5 days, trading near the top of its 5-day range at $211.24, close to the $211.95 high. The Northland AMD downgrade citing 'chip rally running on fumes' is an indirect negative signal for the sector but not a direct NVDA catalyst. The DeepMind researcher raising $1.1B for Ineffable Intelligence is AI-sector positive but too distant from NVDA's near-term fundamentals to justify a BUY. With no cash deployed and only \u20ac100 available, a BUY here near the 5-day high with no fresh direct catalyst carries gap-down risk. HOLD pending a clearer entry or direct NVDA-specific catalyst.",
       "market_session": "regular"
     },
     "TSLA": {
       "action": "HOLD",
       "confidence": "low",
-      "headline": "Elon Musk delivers 'great news' but analyst caution advises against rushing to buy",
-      "reasoning": "TSLA is down -1.3% today and -4.5% over 5 days, continuing a near-term downtrend from $393.95. The headline 'Elon Musk Just Delivered Great News for Tesla, but Don't Rush to Buy the Stock' is vague and explicitly cautionary \u2014 it does not describe a concrete, quantifiable positive catalyst. The solar panel commentary is unrelated to near-term financials. The Ford comparison article is sector-generic. No earnings beat, guidance raise, or product launch is confirmed. With a weakening 5-day trend and no concrete bullish catalyst, this is a HOLD on the watchlist with no entry justified.",
+      "headline": "Elon Musk solar energy comments; no concrete Tesla business catalyst",
+      "reasoning": "TSLA is down -0.8% today and -4.0% over 5 days, continuing its near-term downtrend from $393.95 to $371.02. The headlines present no concrete, quantifiable positive catalyst \u2014 the Musk solar panel comment is unrelated to Tesla's core auto or AI business, and the 'AI Bet vs. Ford Truck Fortress' piece is speculative editorial. The 'Don't Rush to Buy' headline explicitly cautions against entry. The downtrend is intact but there is no thesis-breaking negative event to justify a short. With no position held and only \u20ac100 cash, opening a short on a stock in a broad downtrend without a fresh specific negative catalyst is insufficient. HOLD watchlist position.",
       "market_session": "regular"
     },
     "MSFT": {
       "action": "HOLD",
       "confidence": "medium",
-      "headline": "Microsoft-OpenAI agreement amendment is notable but details are unclear; UK antitrust lawsuit is a mild negative",
-      "reasoning": "MSFT is essentially flat today (-0.2%) and over 5 days (-0.3%), trading at $422.85 within a tight range. The Microsoft-OpenAI agreement amendment could be positive (deeper AI integration) or neutral depending on terms, but no concrete financial impact is described \u2014 this is insufficient as a BUY catalyst. The UK antitrust lawsuit from Slack over Teams bundling is a concrete negative regulatory event, though historically such EU/UK actions result in fines rather than structural remedies for MSFT. Data center cost surge (+66% natural gas costs) is a margin headwind. Net assessment: mixed signals, no strong directional edge. HOLD watchlist.",
+      "headline": "UK antitrust lawsuit from Slack over Teams bundling is a concrete but manageable negative",
+      "reasoning": "MSFT is essentially flat today (+0.1%) and over 5 days (-0.1%), trading at $423.81 within a tight range. The UK antitrust lawsuit from Slack over Teams bundling is a concrete negative event \u2014 regulatory risk in a key product line \u2014 but MSFT has navigated similar antitrust actions historically and Teams revenue is not the primary earnings driver. The Microsoft-OpenAI agreement amendment is a mild positive for AI integration depth. The data center natural gas cost surge is a sector-wide margin headwind but not MSFT-specific. No position is held and no strong directional edge exists to open a short or long here. HOLD.",
       "market_session": "regular"
     },
     "META": {
       "action": "HOLD",
       "confidence": "medium",
-      "headline": "China blocks Meta's $2B acquisition of AI startup Manus \u2014 concrete negative but limited financial magnitude",
-      "reasoning": "META is up +0.2% today and +0.9% over 5 days, near the top of its 5-day range at $675.02. China blocking the $2B Manus acquisition is a concrete negative event \u2014 it eliminates a specific AI capability acquisition and signals continued geopolitical friction for META in China. However, $2B is less than 0.5% of META's market cap and China is already a minimal revenue contributor due to existing restrictions. The Shaquille O'Neal headline is noise. The Microsoft/OpenAI midday story is not META-specific. The stock's resilience near 5-day highs despite this news suggests the market has absorbed it. HOLD watchlist \u2014 no strong entry or short catalyst.",
+      "headline": "China blocks Meta's $2B Manus acquisition; Shaq headline is noise",
+      "reasoning": "META is up +0.3% today and +0.9% over 5 days at $675.14, near the top of its 5-day range. The China blocking of the $2B Manus acquisition remains the key concrete negative \u2014 it eliminates a specific AI capability acquisition and signals continued geopolitical friction for META's AI strategy. However, $2B is small relative to META's market cap and the stock has absorbed this news without breaking down. The Shaq headline is pure noise with no business relevance. No new bullish catalyst has emerged to justify a BUY near the 5-day high. HOLD watchlist position.",
       "market_session": "regular"
     },
     "AMZN": {
       "action": "HOLD",
       "confidence": "medium",
-      "headline": "Amazon Is a Strong Buy as Cloud Unit Reignites Growth Story",
-      "reasoning": "AMZN is down -0.8% today but up +4.7% over 5 days, trading at $261.57 near the top of its 5-day range. The 'Strong Buy' cloud growth headline is a positive fundamental signal \u2014 AWS re-acceleration is a well-documented thesis driver. However, the Bridgewater CIO warning that AI poses an existential threat to software firms introduces uncertainty about whether cloud incumbents benefit or face disruption. The Shaquille O'Neal headline is noise. With only \u20ac100 cash available, a small BUY is technically possible but the -0.8% intraday move and the existential AI threat commentary warrant caution. HOLD watchlist pending earnings confirmation of AWS growth.",
+      "headline": "Amazon Strong Buy rating on AWS cloud growth reignition",
+      "reasoning": "AMZN is down -0.4% today but up +5.2% over 5 days, trading at $262.80 near the top of its 5-day range ($264.50 high). The 'Strong Buy' AWS cloud growth headline is a positive fundamental signal but is analyst opinion rather than a concrete earnings event. The Bridgewater CIO comment that AI poses an existential threat to software firms is a macro headwind but vague and not AMZN-specific. With the stock near its 5-day high and only \u20ac100 available, buying near resistance without a fresh concrete catalyst (earnings, guidance raise) is poor risk/reward. HOLD watchlist position.",
       "market_session": "regular"
     },
     "SNAP": {
       "action": "HOLD",
       "confidence": "low",
-      "headline": "SNAP up +6.9% today; Randian Capital open letter to board is activist signal but details unclear",
-      "reasoning": "SNAP is up +6.9% today and +9.8% over 5 days, trading at $6.19 near the top of its range. The Randian Capital open letter to the board is a potential activist catalyst, but without knowing the specific demands (sale, restructuring, management change), it cannot be assessed as a concrete positive. The ex-Snap exec named as Expedia CFO is not a SNAP catalyst. The stock has already moved significantly on this news. Chasing a +6.9% intraday move on an unclear activist letter in a low-priced, high-volatility stock is not justified. HOLD \u2014 add to watchlist for monitoring if activist demands become concrete.",
+      "headline": "Randian Capital open letter to Snap board; activist catalyst unconfirmed",
+      "reasoning": "SNAP is up +6.6% today and +9.4% over 5 days, trading at $6.17 near the top of its range. The Randian Capital open letter is a potential activist catalyst but without confirmed demands, board response, or a specific value-unlock plan, it remains speculative. The Expedia naming an ex-Snap exec as CFO is irrelevant to SNAP's business. The stock has already moved +9.4% over 5 days, meaning much of the activist speculation may be priced in. With only \u20ac100 cash and low-confidence catalyst quality, chasing this move is not justified. HOLD watchlist position.",
       "market_session": "regular"
     }
   },
@@ -170,11 +122,14 @@
   "last_market_session": "regular",
   "last_analysis_confidence": "medium",
   "last_analysis_risks": [
-    "Only \u20ac100 cash available severely limits position sizing \u2014 the NTLA BUY of \u20ac40 and POET short of \u20ac50 consume nearly all available capital, leaving minimal buffer for additional opportunities or margin calls.",
-    "DPZ SELL catalyst is inferred from 'gapping stocks' list membership rather than an explicitly named earnings/guidance event \u2014 confidence is medium, not high, due to this data gap.",
-    "NTLA's -10.6% decline on positive Phase 3 data is unusual and may signal undisclosed concerns (e.g., safety signals, commercial viability questions, or secondary offering risk) not captured in the provided headlines.",
-    "POET short position carries gap-risk if any positive news emerges (e.g., replacement order, partnership announcement) \u2014 the stock has already fallen -37.7% and short squeezes are possible at these levels.",
-    "XE is a recent IPO with very limited fundamental data and extreme volatility \u2014 the watchlist hold is appropriate but any future BUY signal should be treated with extra caution.",
-    "Multiple watchlist tickers (NVDA, TSLA, MSFT, META, AMZN) have no actionable entry given the \u20ac100 cash constraint \u2014 portfolio is effectively cash-constrained and cannot diversify meaningfully."
+    "Portfolio has \u20ac100 cash and no holdings \u2014 all actions are watchlist monitoring only; no capital is being deployed this session due to insufficient edge on any ticker relative to available funds.",
+    "NVDA and AMZN are both near 5-day highs with no fresh direct catalysts \u2014 buying near resistance with limited cash is poor risk/reward.",
+    "TSLA downtrend is intact but no specific negative catalyst justifies opening a short position at this time.",
+    "MSFT UK antitrust lawsuit risk is real but magnitude is uncertain and the stock has not broken down on the news.",
+    "SNAP activist catalyst (Randian Capital) is unconfirmed and speculative \u2014 the +9.4% 5-day move may already price in the open letter.",
+    "DPZ added to watchlist: Q1 earnings miss with CEO flagging weak consumer sentiment is a concrete negative catalyst; stock down -6.2% today and -9.8% over 5 days. Monitoring for potential short entry if downtrend confirms.",
+    "POET (-39.2% on Marvell order cancellation) and CMPX (-49.7%) are extreme movers but the thesis-breaking events are already fully priced intraday \u2014 no actionable edge for new short entry at these levels.",
+    "BTC-USD data is N/A \u2014 no actionable signal possible.",
+    "ARX.TO has no price data or headlines \u2014 cannot assess."
   ]
 }
