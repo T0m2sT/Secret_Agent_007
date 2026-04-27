@@ -20,90 +20,231 @@
     "TXN",
     "IREN",
     "APLD",
-    "NVO"
+    "NVO",
+    "QCOM"
   ],
-  "last_run": "2026-04-25T23:26:37.128517+00:00",
+  "last_run": "2026-04-27T10:24:55.436119+00:00",
   "last_alert": {
-    "ticker": "MSFT",
-    "action": "HOLD",
-    "reasoning": "MSFT is effectively flat from entry (+0.1%) with the Azure AI, Copilot monetization, and OpenAI partnership thesis fully intact. No new fundamental catalysts this run \u2014 holding is the correct disciplined stance while the position matures.",
+    "ticker": "OGN",
+    "action": "BUY",
+    "confidence": "high",
+    "headline": "India's Sun Pharma to acquire Organon in $11.75 billion deal \u2014 confirmed acquisition at premium",
+    "reasoning": "The Sun Pharma acquisition of Organon at $11.75 billion is a concrete, confirmed M&A event reported by multiple sources \u2014 this is the strongest catalyst in today's data. OGN is up +4.8% pre-market and +21.6% over 5 days, but M&A deals typically trade to the acquisition price, suggesting further upside if the deal closes at the announced terms. The deal size and multiple sources confirm this is not a rumor. Pre-market reliability is lower, but M&A announcements are the exception where pre-market action is meaningful and directional. Sizing at \u20ac30 (50% of available cash) to manage gap-risk at open while capturing the acquisition premium thesis. Risk: deal falls through or regulatory block.",
+    "market_session": "pre-market",
     "all_actions": [
       {
         "ticker": "MSFT",
         "action": "HOLD",
-        "reasoning": "MSFT is effectively flat from entry (+0.1%) with the Azure AI, Copilot monetization, and OpenAI partnership thesis fully intact. No new fundamental catalysts this run \u2014 holding is the correct disciplined stance while the position matures."
-      },
-      {
-        "ticker": "SPY",
-        "action": "HOLD",
-        "reasoning": "SPY is up modestly (+0.4%) in line with broad market strength. No specific catalyst to add here; core diversification thesis is sound but available cash is limited and better alpha opportunities exist in the watchlist."
-      },
-      {
-        "ticker": "QQQ",
-        "action": "HOLD",
-        "reasoning": "QQQ +0.8% reflects broad tech strength. Watching as a diversification vehicle but no new catalyst to justify deploying limited cash here over higher-conviction individual names."
+        "headline": "Microsoft announces significant job reductions amid AI pivot; Big Tech earnings imminent",
+        "confidence": "medium",
+        "reasoning": "MSFT reports earnings imminently and is up only 0.1% vs entry \u2014 essentially flat. The job reduction headline is a double-edged catalyst: cost discipline is bullish for margins, but signals restructuring risk. Pre-market price action (+1.8%) is low reliability. The 'Stock Futures Slide' headline introduces macro headwind ahead of earnings. With 100% of holdings in MSFT and earnings as the binary event, holding through the print is the correct posture \u2014 no new negative thesis-breaking news justifies a pre-earnings exit, but cash constraints prevent adding. Wait for earnings reaction in regular session."
       },
       {
         "ticker": "NVDA",
         "action": "HOLD",
-        "reasoning": "NVDA is up +4.2% today, a strong move, but this appears driven by broad AI/semiconductor sector momentum rather than a specific new fundamental catalyst for NVDA itself. Buying into a +4.2% daily spike on momentum alone violates Rule #4 (no speculative pile-ons). The AI data center thesis remains compelling and valuation is high; a better entry would come on a pullback toward the $190\u2013200 range rather than chasing today's run."
+        "headline": "No direct NVDA catalyst; semiconductor sector broadly positive but NVDA-specific news absent",
+        "confidence": "low",
+        "reasoning": "NVDA is up +4.2% pre-market and +3.1% over 5 days, but none of the three headlines are directly about NVDA \u2014 the SpaceX valuation piece and Fed inflation update are sector-generic noise, and the TSMC trade secrets case is tangentially related at best. Pre-market price action is low reliability. The semiconductor supercycle narrative is supportive but not a fresh catalyst. With only \u20ac60.03 cash available and MSFT consuming all holdings, a BUY would be appropriate on a direct NVDA catalyst (e.g., data center order, earnings beat) but not on sector momentum alone. Keep on watchlist."
       },
       {
         "ticker": "TSLA",
         "action": "HOLD",
-        "reasoning": "TSLA +0.7% today is quiet and unremarkable. The EV demand cycle remains uncertain, and with Musk's political distractions and margin pressures ongoing, there is no clear bullish catalyst to justify entry. Watchlist only."
+        "headline": "Tesla: AI and Robotics shift narrative; SpaceX valuation piece is not a TSLA catalyst",
+        "confidence": "low",
+        "reasoning": "TSLA is down -4.1% over 5 days and only +0.7% today pre-market, showing relative weakness vs the broader tech rally. The SpaceX valuation article is not a Tesla catalyst \u2014 SpaceX is a separate private entity. The 'AI and Robotics shift' headline is a thesis-supportive narrative piece but not a concrete event. The 'Elon Musk's next AI bet could revive a familiar Tesla fear' headline is vague and potentially negative. No earnings beat, product launch, or guidance update present. Insufficient catalyst for a BUY; no thesis-breaking news for a SELL. Remain on watchlist."
       },
       {
         "ticker": "META",
         "action": "HOLD",
-        "reasoning": "META +2.2% today is encouraging and reflects ongoing AI monetization optimism. However, buying into a +2.2% daily move without a specific fresh catalyst (earnings beat, major product launch, guidance raise) is momentum-chasing. The thesis is sound but entry here would be reactive rather than conviction-driven. Watch for a pullback or a fundamental catalyst."
+        "headline": "China blocks Meta's acquisition of AI firm Manus \u2014 concrete negative catalyst but limited magnitude",
+        "confidence": "medium",
+        "reasoning": "The China blocking of Meta's Manus acquisition is a direct, concrete negative event. However, Manus is a relatively small Chinese AI startup and this deal was not a primary revenue driver for META \u2014 the financial impact is limited. META is still up +2.2% pre-market, suggesting the market is not treating this as thesis-breaking. META reports earnings this week, which is the dominant catalyst. The Ackman portfolio mention is a sentiment positive but not actionable. No BUY given cash constraints and pre-market unreliability; no SELL as the Manus block is not thesis-invalidating. Hold through earnings."
       },
       {
         "ticker": "AMZN",
         "action": "HOLD",
-        "reasoning": "AMZN +1.5% today in line with broad market and tech strength. AWS AI infrastructure thesis remains intact but no new specific catalyst this run. No action warranted on routine daily movement."
+        "headline": "Google eyes $40bn Anthropic investment \u2014 indirect competitive signal; AMZN earnings imminent",
+        "confidence": "medium",
+        "reasoning": "The Google-Anthropic $40bn investment headline is a competitive signal for AMZN's AWS AI positioning \u2014 AMZN has its own Anthropic stake, so this is mixed: validates the Anthropic asset but signals Google is escalating AI infrastructure spend. AMZN is up +1.5% pre-market and +6.3% over 5 days, showing strong momentum. Earnings are the near-term binary event. The Scaramucci 'selling too early' piece is noise. Pre-market price action is low reliability. No cash available for a meaningful BUY. Hold through earnings catalyst."
       },
       {
         "ticker": "AMD",
         "action": "HOLD",
-        "reasoning": "AMD +3.3% today, likely lifted by sector momentum following NVDA strength and ARM's outperformance. The MI300X AI GPU thesis is real and competitive, but a +3.3% day on sector sympathy rather than AMD-specific news is not a conviction entry point. Would prefer entry on a pullback or following a positive earnings/guidance event."
+        "headline": "AMD up +26.5% in 5 days; Intel reset narrative and semiconductor supercycle supportive but no direct AMD catalyst",
+        "confidence": "medium",
+        "reasoning": "AMD has surged +26.5% in 5 days \u2014 approaching the >30% profit-taking threshold. The 'Intel Resets the Clock' headline is indirectly bullish for AMD as Intel's competitive reset could cede market share, but this is not a direct AMD catalyst. The semiconductor supercycle piece is sector-generic. No earnings beat or product launch headline directly for AMD. At +26.5% in 5 days, risk/reward is becoming stretched. However, without a direct negative catalyst and given the broader semiconductor rally, a HOLD is appropriate \u2014 a BUY would require cash and a direct catalyst. Monitor closely for the 30% threshold."
       },
       {
         "ticker": "MU",
         "action": "HOLD",
-        "reasoning": "MU +0.2% today \u2014 essentially flat and underperforming the broader semiconductor rally. This relative weakness on a strong sector day is a mild negative signal; no reason to add without a clearer catalyst or a positive earnings surprise."
+        "headline": "Micron: CPU-driven inflection point narrative; cycle evolution thesis intact",
+        "confidence": "medium",
+        "reasoning": "MU is up +10.8% over 5 days with supportive fundamental narratives \u2014 'Hidden CPU-Driven Inflection Point' and 'Cycle Is Evolving' are thesis-confirming pieces, though they are analytical articles rather than hard news events. The semiconductor supercycle headline adds sector tailwind. No earnings miss, guidance cut, or negative regulatory news. Pre-market +0.2% is flat and low reliability. The thesis remains intact. No cash available for a meaningful BUY. Hold on watchlist pending a direct catalyst such as earnings or a major customer announcement."
       },
       {
         "ticker": "TSM",
         "action": "HOLD",
-        "reasoning": "TSM +1.6% today, consistent with broad semiconductor strength. The foundry dominance thesis is intact, but geopolitical Taiwan risk remains a persistent overhang. No specific new catalyst to act on."
+        "headline": "TSMC: AI Revolution growth signal; trade secrets conviction is minor negative",
+        "confidence": "medium",
+        "reasoning": "TSM is up +9.9% over 5 days with strong fundamental support \u2014 'Vital Cog of AI Revolution' and 'Powerful Growth Signal' are thesis-confirming. The Tokyo Electron staff conviction for TSMC trade secrets theft is a minor negative (IP protection concern) but does not materially impact TSMC's revenue or competitive position. The semiconductor supercycle narrative is broadly supportive. Pre-market +1.6% is low reliability. No cash available for a BUY. Thesis intact; hold on watchlist."
       },
       {
         "ticker": "ARM",
         "action": "HOLD",
-        "reasoning": "ARM +5.8% today is the standout mover, but this is a significant single-day surge that makes chasing very risky. Without a specific confirmed catalyst (earnings beat, major licensing win, guidance raise) this looks like momentum-driven speculation. Adding to watchlist focus but not buying into a +5.8% day \u2014 Rule #4 applies firmly here."
+        "headline": "Arm Holdings soars 41% on analyst upgrade; AGI CPU launch driving bullish sentiment",
+        "confidence": "medium",
+        "reasoning": "ARM is up +34.1% in 5 days and +5.8% today pre-market \u2014 this is the strongest mover on the watchlist and has crossed the >30% profit-taking threshold. The catalyst is concrete: an analyst turning bullish on the CPU market following ARM's AGI CPU launch, with a 41% surge cited. However, at +34.1% in 5 days, the risk/reward for a new BUY entry is poor \u2014 much of the move is already priced. Jim Cramer's endorsement is a mild contrarian signal. No cash available for a meaningful position. The valuation check article suggests the move warrants scrutiny. Hold on watchlist; do not chase at these levels."
       },
       {
         "ticker": "TXN",
         "action": "HOLD",
-        "reasoning": "TXN -3.7% today is a notable underperformer in an otherwise strong semiconductor session, suggesting potential company-specific or analog/industrial segment weakness. This warrants monitoring but not a buy \u2014 falling knife risk when the broader sector is up and TXN diverges negatively. Keeping on watchlist to assess whether this is earnings-related or macro (industrial cycle softness)."
+        "headline": "Truist and Wolfe Research raise TXN price targets after strong Q1 results and Q2 guidance",
+        "confidence": "medium",
+        "reasoning": "TXN is down -3.7% today pre-market despite two analyst price target upgrades following strong Q1 results \u2014 Truist and Wolfe Research both raised targets, with Wolfe going to $315. The pre-market decline is likely profit-taking after a +18.6% 5-day run, not thesis invalidation. The Q1 beat and Q2 guidance confirmation are concrete positive catalysts. The '5 Signs Markets Are Disconnected' piece is macro noise. Pre-market price action is low reliability. The analyst upgrades post-earnings are bullish but the stock has already run significantly. Hold on watchlist; a pullback entry in regular session could be attractive."
       },
       {
         "ticker": "IREN",
         "action": "HOLD",
-        "reasoning": "IREN -4.9% today, continuing weakness in crypto mining infrastructure names. Without a specific positive catalyst and given the speculative nature of this name for a medium-term portfolio, no action warranted."
+        "headline": "IREN trending overnight with Q3 FY26 results scheduled May 7; no specific catalyst identified",
+        "confidence": "low",
+        "reasoning": "IREN is down -4.9% pre-market with a 'trending overnight' headline but no specific catalyst identified in the news \u2014 the trending article does not name a concrete event. The Q3 results on May 7 are a near-term binary catalyst. The whale activity piece is not actionable. Pre-market price action is low reliability and the decline without a clear catalyst is concerning but not thesis-breaking. No cash available for a meaningful BUY. Hold on watchlist pending the May 7 earnings catalyst."
       },
       {
         "ticker": "APLD",
         "action": "HOLD",
-        "reasoning": "APLD -6.6% today is a sharp single-day drop. This is a speculative AI data center infrastructure name with high volatility. No conviction basis to buy the dip without understanding the specific cause; could be fundamental deterioration. Watchlist only."
+        "headline": "Needham maintains Buy on Applied Digital, raises PT to $48; investor presentation released",
+        "confidence": "medium",
+        "reasoning": "APLD is down -6.6% pre-market despite a Needham Buy reiteration with a raised $48 price target \u2014 a concrete positive analyst action. The investor presentation release is a transparency positive. The -6.6% pre-market move without a clear negative catalyst suggests either profit-taking after a +8.7% 5-day run or broader sector rotation. The Needham upgrade is a direct, recent, positive catalyst that partially offsets the price decline. Pre-market action is low reliability. No cash available for a BUY. The Needham $48 PT vs current ~$35 represents significant upside; hold on watchlist."
       },
       {
         "ticker": "NVO",
         "action": "HOLD",
-        "reasoning": "NVO +2.8% today, recovering modestly from prior weakness. The GLP-1 obesity drug thesis remains structurally compelling, but competition from LLY and pipeline uncertainty keep this a watch rather than act situation. Would need clearer positive catalyst or pullback to a better entry level."
+        "headline": "No direct NVO catalyst; 'Depressed Equities' mention is vague; Eli Lilly competitive context",
+        "confidence": "low",
+        "reasoning": "NVO is up +2.8% pre-market but none of the three headlines are directly about Novo Nordisk \u2014 the Intel chip piece is irrelevant, the Eli Lilly article is about a competitor, and 'Depressed Equities' is a generic screen. NVO has been under significant pressure from GLP-1 competition and pipeline concerns in recent months. The +2.8% pre-market move without a direct catalyst is low reliability. No earnings beat, pipeline update, or regulatory decision present. Insufficient evidence for a BUY; no new negative catalyst for a SELL. Hold on watchlist pending a direct NVO catalyst."
+      },
+      {
+        "ticker": "OGN",
+        "action": "BUY",
+        "amount": "30.00",
+        "headline": "India's Sun Pharma to acquire Organon in $11.75 billion deal \u2014 confirmed acquisition at premium",
+        "confidence": "high",
+        "reasoning": "The Sun Pharma acquisition of Organon at $11.75 billion is a concrete, confirmed M&A event reported by multiple sources \u2014 this is the strongest catalyst in today's data. OGN is up +4.8% pre-market and +21.6% over 5 days, but M&A deals typically trade to the acquisition price, suggesting further upside if the deal closes at the announced terms. The deal size and multiple sources confirm this is not a rumor. Pre-market reliability is lower, but M&A announcements are the exception where pre-market action is meaningful and directional. Sizing at \u20ac30 (50% of available cash) to manage gap-risk at open while capturing the acquisition premium thesis. Risk: deal falls through or regulatory block."
       }
+    ],
+    "risks": [
+      "MSFT earnings this week are a binary event \u2014 the entire holdings portfolio is concentrated in a single pre-earnings position; a miss or weak guidance could cause significant drawdown",
+      "Pre-market price action across all tickers is low reliability due to thin liquidity; all percentage moves should be treated as directional signals only, not confirmed levels",
+      "OGN BUY carries deal-break risk \u2014 if Sun Pharma acquisition falls through or faces regulatory challenge, OGN could retrace sharply",
+      "ARM and AMD have both exceeded the 30% 5-day return threshold \u2014 if held, these would be profit-taking candidates; as watchlist items, entry at current levels carries mean-reversion risk",
+      "IREN trending overnight without an identified catalyst is a data quality concern \u2014 the actual driver of the move is unknown and could be negative",
+      "Broad macro headwind from 'Stock Futures Slide' headline ahead of Big Tech earnings week introduces systemic risk across the entire watchlist",
+      "Cash position of only \u20ac60.03 severely limits actionability \u2014 most BUY signals are constrained by position sizing rules"
     ]
   },
-  "trade_log": []
+  "trade_log": [],
+  "ticker_signals": {
+    "MSFT": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "Microsoft announces significant job reductions amid AI pivot; Big Tech earnings imminent",
+      "reasoning": "MSFT reports earnings imminently and is up only 0.1% vs entry \u2014 essentially flat. The job reduction headline is a double-edged catalyst: cost discipline is bullish for margins, but signals restructuring risk. Pre-market price action (+1.8%) is low reliability. The 'Stock Futures Slide' headline introduces macro headwind ahead of earnings. With 100% of holdings in MSFT and earnings as the binary event, holding through the print is the correct posture \u2014 no new negative thesis-breaking news justifies a pre-earnings exit, but cash constraints prevent adding. Wait for earnings reaction in regular session.",
+      "market_session": "pre-market"
+    },
+    "NVDA": {
+      "action": "HOLD",
+      "confidence": "low",
+      "headline": "No direct NVDA catalyst; semiconductor sector broadly positive but NVDA-specific news absent",
+      "reasoning": "NVDA is up +4.2% pre-market and +3.1% over 5 days, but none of the three headlines are directly about NVDA \u2014 the SpaceX valuation piece and Fed inflation update are sector-generic noise, and the TSMC trade secrets case is tangentially related at best. Pre-market price action is low reliability. The semiconductor supercycle narrative is supportive but not a fresh catalyst. With only \u20ac60.03 cash available and MSFT consuming all holdings, a BUY would be appropriate on a direct NVDA catalyst (e.g., data center order, earnings beat) but not on sector momentum alone. Keep on watchlist.",
+      "market_session": "pre-market"
+    },
+    "TSLA": {
+      "action": "HOLD",
+      "confidence": "low",
+      "headline": "Tesla: AI and Robotics shift narrative; SpaceX valuation piece is not a TSLA catalyst",
+      "reasoning": "TSLA is down -4.1% over 5 days and only +0.7% today pre-market, showing relative weakness vs the broader tech rally. The SpaceX valuation article is not a Tesla catalyst \u2014 SpaceX is a separate private entity. The 'AI and Robotics shift' headline is a thesis-supportive narrative piece but not a concrete event. The 'Elon Musk's next AI bet could revive a familiar Tesla fear' headline is vague and potentially negative. No earnings beat, product launch, or guidance update present. Insufficient catalyst for a BUY; no thesis-breaking news for a SELL. Remain on watchlist.",
+      "market_session": "pre-market"
+    },
+    "META": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "China blocks Meta's acquisition of AI firm Manus \u2014 concrete negative catalyst but limited magnitude",
+      "reasoning": "The China blocking of Meta's Manus acquisition is a direct, concrete negative event. However, Manus is a relatively small Chinese AI startup and this deal was not a primary revenue driver for META \u2014 the financial impact is limited. META is still up +2.2% pre-market, suggesting the market is not treating this as thesis-breaking. META reports earnings this week, which is the dominant catalyst. The Ackman portfolio mention is a sentiment positive but not actionable. No BUY given cash constraints and pre-market unreliability; no SELL as the Manus block is not thesis-invalidating. Hold through earnings.",
+      "market_session": "pre-market"
+    },
+    "AMZN": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "Google eyes $40bn Anthropic investment \u2014 indirect competitive signal; AMZN earnings imminent",
+      "reasoning": "The Google-Anthropic $40bn investment headline is a competitive signal for AMZN's AWS AI positioning \u2014 AMZN has its own Anthropic stake, so this is mixed: validates the Anthropic asset but signals Google is escalating AI infrastructure spend. AMZN is up +1.5% pre-market and +6.3% over 5 days, showing strong momentum. Earnings are the near-term binary event. The Scaramucci 'selling too early' piece is noise. Pre-market price action is low reliability. No cash available for a meaningful BUY. Hold through earnings catalyst.",
+      "market_session": "pre-market"
+    },
+    "AMD": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "AMD up +26.5% in 5 days; Intel reset narrative and semiconductor supercycle supportive but no direct AMD catalyst",
+      "reasoning": "AMD has surged +26.5% in 5 days \u2014 approaching the >30% profit-taking threshold. The 'Intel Resets the Clock' headline is indirectly bullish for AMD as Intel's competitive reset could cede market share, but this is not a direct AMD catalyst. The semiconductor supercycle piece is sector-generic. No earnings beat or product launch headline directly for AMD. At +26.5% in 5 days, risk/reward is becoming stretched. However, without a direct negative catalyst and given the broader semiconductor rally, a HOLD is appropriate \u2014 a BUY would require cash and a direct catalyst. Monitor closely for the 30% threshold.",
+      "market_session": "pre-market"
+    },
+    "MU": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "Micron: CPU-driven inflection point narrative; cycle evolution thesis intact",
+      "reasoning": "MU is up +10.8% over 5 days with supportive fundamental narratives \u2014 'Hidden CPU-Driven Inflection Point' and 'Cycle Is Evolving' are thesis-confirming pieces, though they are analytical articles rather than hard news events. The semiconductor supercycle headline adds sector tailwind. No earnings miss, guidance cut, or negative regulatory news. Pre-market +0.2% is flat and low reliability. The thesis remains intact. No cash available for a meaningful BUY. Hold on watchlist pending a direct catalyst such as earnings or a major customer announcement.",
+      "market_session": "pre-market"
+    },
+    "TSM": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "TSMC: AI Revolution growth signal; trade secrets conviction is minor negative",
+      "reasoning": "TSM is up +9.9% over 5 days with strong fundamental support \u2014 'Vital Cog of AI Revolution' and 'Powerful Growth Signal' are thesis-confirming. The Tokyo Electron staff conviction for TSMC trade secrets theft is a minor negative (IP protection concern) but does not materially impact TSMC's revenue or competitive position. The semiconductor supercycle narrative is broadly supportive. Pre-market +1.6% is low reliability. No cash available for a BUY. Thesis intact; hold on watchlist.",
+      "market_session": "pre-market"
+    },
+    "ARM": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "Arm Holdings soars 41% on analyst upgrade; AGI CPU launch driving bullish sentiment",
+      "reasoning": "ARM is up +34.1% in 5 days and +5.8% today pre-market \u2014 this is the strongest mover on the watchlist and has crossed the >30% profit-taking threshold. The catalyst is concrete: an analyst turning bullish on the CPU market following ARM's AGI CPU launch, with a 41% surge cited. However, at +34.1% in 5 days, the risk/reward for a new BUY entry is poor \u2014 much of the move is already priced. Jim Cramer's endorsement is a mild contrarian signal. No cash available for a meaningful position. The valuation check article suggests the move warrants scrutiny. Hold on watchlist; do not chase at these levels.",
+      "market_session": "pre-market"
+    },
+    "TXN": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "Truist and Wolfe Research raise TXN price targets after strong Q1 results and Q2 guidance",
+      "reasoning": "TXN is down -3.7% today pre-market despite two analyst price target upgrades following strong Q1 results \u2014 Truist and Wolfe Research both raised targets, with Wolfe going to $315. The pre-market decline is likely profit-taking after a +18.6% 5-day run, not thesis invalidation. The Q1 beat and Q2 guidance confirmation are concrete positive catalysts. The '5 Signs Markets Are Disconnected' piece is macro noise. Pre-market price action is low reliability. The analyst upgrades post-earnings are bullish but the stock has already run significantly. Hold on watchlist; a pullback entry in regular session could be attractive.",
+      "market_session": "pre-market"
+    },
+    "IREN": {
+      "action": "HOLD",
+      "confidence": "low",
+      "headline": "IREN trending overnight with Q3 FY26 results scheduled May 7; no specific catalyst identified",
+      "reasoning": "IREN is down -4.9% pre-market with a 'trending overnight' headline but no specific catalyst identified in the news \u2014 the trending article does not name a concrete event. The Q3 results on May 7 are a near-term binary catalyst. The whale activity piece is not actionable. Pre-market price action is low reliability and the decline without a clear catalyst is concerning but not thesis-breaking. No cash available for a meaningful BUY. Hold on watchlist pending the May 7 earnings catalyst.",
+      "market_session": "pre-market"
+    },
+    "APLD": {
+      "action": "HOLD",
+      "confidence": "medium",
+      "headline": "Needham maintains Buy on Applied Digital, raises PT to $48; investor presentation released",
+      "reasoning": "APLD is down -6.6% pre-market despite a Needham Buy reiteration with a raised $48 price target \u2014 a concrete positive analyst action. The investor presentation release is a transparency positive. The -6.6% pre-market move without a clear negative catalyst suggests either profit-taking after a +8.7% 5-day run or broader sector rotation. The Needham upgrade is a direct, recent, positive catalyst that partially offsets the price decline. Pre-market action is low reliability. No cash available for a BUY. The Needham $48 PT vs current ~$35 represents significant upside; hold on watchlist.",
+      "market_session": "pre-market"
+    },
+    "NVO": {
+      "action": "HOLD",
+      "confidence": "low",
+      "headline": "No direct NVO catalyst; 'Depressed Equities' mention is vague; Eli Lilly competitive context",
+      "reasoning": "NVO is up +2.8% pre-market but none of the three headlines are directly about Novo Nordisk \u2014 the Intel chip piece is irrelevant, the Eli Lilly article is about a competitor, and 'Depressed Equities' is a generic screen. NVO has been under significant pressure from GLP-1 competition and pipeline concerns in recent months. The +2.8% pre-market move without a direct catalyst is low reliability. No earnings beat, pipeline update, or regulatory decision present. Insufficient evidence for a BUY; no new negative catalyst for a SELL. Hold on watchlist pending a direct NVO catalyst.",
+      "market_session": "pre-market"
+    }
+  },
+  "last_market_session": "pre-market",
+  "last_analysis_confidence": "medium",
+  "last_analysis_risks": [
+    "MSFT earnings this week are a binary event \u2014 the entire holdings portfolio is concentrated in a single pre-earnings position; a miss or weak guidance could cause significant drawdown",
+    "Pre-market price action across all tickers is low reliability due to thin liquidity; all percentage moves should be treated as directional signals only, not confirmed levels",
+    "OGN BUY carries deal-break risk \u2014 if Sun Pharma acquisition falls through or faces regulatory challenge, OGN could retrace sharply",
+    "ARM and AMD have both exceeded the 30% 5-day return threshold \u2014 if held, these would be profit-taking candidates; as watchlist items, entry at current levels carries mean-reversion risk",
+    "IREN trending overnight without an identified catalyst is a data quality concern \u2014 the actual driver of the move is unknown and could be negative",
+    "Broad macro headwind from 'Stock Futures Slide' headline ahead of Big Tech earnings week introduces systemic risk across the entire watchlist",
+    "Cash position of only \u20ac60.03 severely limits actionability \u2014 most BUY signals are constrained by position sizing rules"
+  ]
 }
