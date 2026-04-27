@@ -88,6 +88,17 @@ def format_alert(action: dict, prices: dict) -> str:
     return "\n".join(lines)
 
 
+def format_alert_brief(action: dict, prices: dict) -> str:
+    ticker = action["ticker"]
+    act = action["action"]
+    emoji = EMOJI.get(act, "⚪")
+    pl = _price_line(ticker, prices)
+    company = _company(ticker, action)
+    confidence = action.get("confidence", "")
+    headline = action.get("headline", "")
+    return f"{emoji} *{act} · {ticker} ({company})* · {confidence} confidence\n💰 {pl}\n📰 _{headline}_"
+
+
 def format_no_action(actions: list, prices: dict) -> str:
     now = datetime.now(ZoneInfo("Europe/Lisbon")).strftime("%a %d %b · %H:%M %Z")
     lines = [

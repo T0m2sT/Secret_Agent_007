@@ -16,7 +16,7 @@ MOCK_RESULT_HOLD = {
     "risks": [],
 }
 MOCK_RESULT_BUY = {
-    "actions": [{"ticker": "NVDA", "action": "BUY", "amount": "20%", "headline": "AI demand", "reasoning": "Strong thesis"}],
+    "actions": [{"ticker": "NVDA", "action": "BUY", "confidence": "high", "amount": "20%", "headline": "AI demand", "reasoning": "Strong thesis"}],
     "overall_confidence": "high",
     "risks": [],
 }
