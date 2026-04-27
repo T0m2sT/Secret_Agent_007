@@ -5,7 +5,7 @@ from agent.portfolio import load_portfolio, save_portfolio
 from agent.fetcher import fetch_prices, fetch_news
 from agent.session import get_market_session, is_us_trading_day
 from agent.analyst import analyse
-from agent.notifier import format_alert, format_alert_brief, format_no_action, send_message
+from agent.notifier import format_alert, format_no_action, send_message
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -74,12 +74,10 @@ def run() -> None:
 
         save_portfolio(portfolio)
 
-        if non_hold:
-            for action in non_hold:
-                if action.get("confidence") == "high":
-                    msg = format_alert(action, prices)
-                else:
-                    msg = format_alert_brief(action, prices)
+        high_confidence = [a for a in non_hold if a.get("confidence") == "high"]
+        if high_confidence:
+            for action in high_confidence:
+                msg = format_alert(action, prices)
                 send_message(telegram_token, telegram_chat_id, msg)
             logger.info("Run complete — %d signal(s) sent", len(non_hold))
         else:
