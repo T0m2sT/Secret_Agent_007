@@ -84,7 +84,6 @@ def apply_action(portfolio: dict, action: dict) -> dict:
         shares = action["shares"]
         price_usd = action["price_usd"]
         cost_eur = action["cost_eur"]
-        bought_pct = action.get("bought_pct", 0)
         cash -= cost_eur
         existing = next((h for h in holdings if h["ticker"] == ticker), None)
         if existing:
@@ -95,7 +94,7 @@ def apply_action(portfolio: dict, action: dict) -> dict:
             )
             holdings = [
                 {**h, "shares": round(total_shares, 8), "total_cost_eur": round(total_cost, 4),
-                 "avg_buy_price_usd": avg_buy, "bought_pct": bought_pct}
+                 "avg_buy_price_usd": avg_buy}
                 if h["ticker"] == ticker else h
                 for h in holdings
             ]
@@ -105,7 +104,6 @@ def apply_action(portfolio: dict, action: dict) -> dict:
                 "shares": round(shares, 8),
                 "total_cost_eur": round(cost_eur, 4),
                 "avg_buy_price_usd": round(price_usd, 2),
-                "bought_pct": bought_pct,
             })
         return {**portfolio, "holdings": holdings, "cash": round(cash, 2)}
 

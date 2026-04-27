@@ -198,90 +198,91 @@ def webhook():
 
         elif text.startswith("/buy"):
             parts = text.split()
-            if len(parts) != 3:
-                send(chat_id, "Usage: `/buy TICKER COST_EUR`\nExample: `/buy NVDA 221.35`")
-            else:
-                ticker = parts[1].upper()
+            # Usage: /buy TICKER SHARES PRICE_USD COST_EUR OR /buy TICKER BUY_PCT PROCEEDS_EUR
+            if len(parts) == 3:
+                # Buy by PCT/PROCEEDS
+                _, ticker, buy_pct_str, proceeds_str = parts + [""] # placeholder for alignment
+                # Actually, check logic: /buy TICKER BUY_PCT PROCEEDS_EUR
+                pass
+            
+            # Re-evaluating: user wants:
+            # 1. /buy TICKER SHARES PRICE_USD COST_EUR
+            # 2. /buy TICKER BUY_PCT PROCEEDS_EUR
+            if len(parts) == 5:
+                # Standard buy
+                _, ticker, shares_str, price_str, cost_str = parts
+                ticker = ticker.upper()
                 try:
-                    cost_eur = float(parts[2])
-                    if cost_eur <= 0:
-                        raise ValueError
+                    shares, price_usd, cost_eur = float(shares_str), float(price_str), float(cost_str)
+                    if shares <= 0 or price_usd <= 0 or cost_eur <= 0: raise ValueError
                 except ValueError:
-                    send(chat_id, "⚠️ Cost must be a positive number.")
+                    send(chat_id, "⚠️ Invalid values.")
                     return "ok", 200
                 
-                portfolio = get_portfolio()
-                if cost_eur > portfolio["cash"]:
-                    send(chat_id, f"⚠️ Not enough cash. You have €{portfolio['cash']:.2f}, this costs €{cost_eur:.2f}.")
-                    return "ok", 200
-                
-                # Simple buy action
-                action = {
-                    "action": "BUY", "ticker": ticker, "shares": 0.0,
-                    "price_usd": 0.0, "cost_eur": cost_eur,
-                }
-                updated = apply_action(portfolio, action)
+                action = {"action": "BUY", "ticker": ticker, "shares": shares, "price_usd": price_usd, "cost_eur": cost_eur}
+                updated = apply_action(get_portfolio(), action)
                 save_portfolio_github(updated)
-                send(chat_id, (
-                    f"✅ *BUY recorded*\n"
-                    f"{ticker} | Cost: €{cost_eur:.2f} | Cash left: €{updated['cash']:.2f}"
-                ))
+                send(chat_id, f"✅ *BUY recorded*\n{ticker} | {shares} shares @ ${price_usd:.2f} | Cost: €{cost_eur:.2f}")
+
+            elif len(parts) == 4 and parts[2].endswith("%"):
+                # Buy by PCT
+                _, ticker, buy_pct_str, proceeds_str = parts
+                ticker = ticker.upper()
+                try:
+                    buy_pct = float(buy_pct_str[:-1]) / 100
+                    proceeds_eur = float(proceeds_str)
+                    if buy_pct <= 0 or proceeds_eur <= 0: raise ValueError
+                except ValueError:
+                    send(chat_id, "⚠️ Invalid values.")
+                    return "ok", 200
+                
+                action = {"action": "BUY", "ticker": ticker, "shares": 0.0, "price_usd": 0.0, "cost_eur": proceeds_eur}
+                updated = apply_action(get_portfolio(), action)
+                save_portfolio_github(updated)
+                send(chat_id, f"✅ *BUY recorded (PCT)*\n{ticker} | {buy_pct_str} of port | Cost: €{proceeds_eur:.2f}")
+            else:
+                send(chat_id, "Usage:\n1. `/buy TICKER SHARES PRICE_USD COST_EUR`\n2. `/buy TICKER BUY_PCT PROCEEDS_EUR`")
 
         elif text.startswith("/sell"):
             parts = text.split()
-            # Usage: /sell TICKER SELL_PCT PROCEEDS_EUR (holding) OR /sell TICKER COST_EUR PROCEEDS_EUR (short)
-            if len(parts) != 4:
-                send(chat_id, (
-                    "Usage:\n"
-                    "1. Sell holding: `/sell TICKER SELL_PCT PROCEEDS_EUR`\n"
-                    "2. Short sell: `/sell TICKER COST_EUR PROCEEDS_EUR`"
-                ))
-            else:
-                ticker = parts[1].upper()
+            # Sell holding: /sell TICKER SELL_PCT PROCEEDS_EUR
+            # Short sell: /sell TICKER SHARES PRICE_USD COST_EUR
+            if len(parts) == 4 and parts[2].endswith("%"):
+                _, ticker, sell_pct_str, proceeds_str = parts
+                ticker = ticker.upper()
+                try:
+                    sell_pct = float(sell_pct_str[:-1]) / 100
+                    proceeds_eur = float(proceeds_str)
+                except:
+                    send(chat_id, "⚠️ Invalid values.")
+                    return "ok", 200
+                
                 portfolio = get_portfolio()
                 holding = next((h for h in portfolio["holdings"] if h["ticker"] == ticker), None)
-
-                if parts[2].endswith("%"):
-                    # Selling a portion of a holding
-                    sell_pct_str = parts[2]
-                    try:
-                        sell_pct = float(sell_pct_str[:-1]) / 100
-                        proceeds_eur = float(parts[3])
-                        if sell_pct <= 0 or sell_pct > 1 or proceeds_eur <= 0:
-                            raise ValueError
-                    except ValueError:
-                        send(chat_id, "⚠️ Invalid values.")
-                        return "ok", 200
-                    
-                    if not holding:
-                        send(chat_id, f"⚠️ {ticker} is not held. Use `/sell TICKER COST_EUR PROCEEDS_EUR` to short.")
-                        return "ok", 200
-
-                    cost_basis_at_pct = holding["total_cost_eur"] * sell_pct
-                    pnl = proceeds_eur - cost_basis_at_pct
-                    action = {"action": "SELL", "ticker": ticker, "amount": sell_pct_str, "price_usd": 0.0, "proceeds_eur": proceeds_eur}
-                else:
-                    # Shorting
-                    try:
-                        cost_eur = float(parts[2])
-                        proceeds_eur = float(parts[3])
-                        if cost_eur <= 0 or proceeds_eur <= 0:
-                            raise ValueError
-                    except ValueError:
-                        send(chat_id, "⚠️ Cost and proceeds must be positive numbers.")
-                        return "ok", 200
-                    
-                    action = {"action": "SELL", "ticker": ticker, "amount": str(cost_eur), "price_usd": 0.0, "proceeds_eur": proceeds_eur}
-                    pnl = proceeds_eur - cost_eur
+                cost_basis = holding["total_cost_eur"] * sell_pct if holding else 0
+                pnl = proceeds_eur - cost_basis
                 
+                action = {"action": "SELL", "ticker": ticker, "amount": sell_pct_str, "price_usd": 0.0, "proceeds_eur": proceeds_eur}
                 updated = apply_action(portfolio, action)
                 save_portfolio_github(updated)
+                send(chat_id, f"✅ *SELL recorded*\n{ticker} {sell_pct_str} | P&L: €{pnl:.2f}")
+
+            elif len(parts) == 5:
+                # Short sell
+                _, ticker, shares_str, price_str, cost_str = parts
+                ticker = ticker.upper()
+                try:
+                    shares, price_usd, cost_eur = float(shares_str), float(price_str), float(cost_str)
+                except:
+                    send(chat_id, "⚠️ Invalid values.")
+                    return "ok", 200
                 
-                pnl_str = f"+€{pnl:.2f}" if pnl >= 0 else f"-€{abs(pnl):.2f}"
-                send(chat_id, (
-                    f"✅ *SELL recorded*\n"
-                    f"{ticker} | Proceeds: €{proceeds_eur:.2f} | P&L: {pnl_str} | Cash now: €{updated['cash']:.2f}"
-                ))
+                action = {"action": "SELL", "ticker": ticker, "amount": str(shares), "price_usd": price_usd, "proceeds_eur": cost_eur}
+                updated = apply_action(get_portfolio(), action)
+                save_portfolio_github(updated)
+                send(chat_id, f"✅ *SHORT recorded*\n{ticker} | {shares} shares @ ${price_usd:.2f} | Proceeds: €{cost_eur:.2f}")
+            else:
+                send(chat_id, "Usage:\n1. Sell: `/sell TICKER SELL_PCT PROCEEDS_EUR`\n2. Short: `/sell TICKER SHARES PRICE_USD COST_EUR`")
 
     except Exception as exc:
         logger.error("Webhook handler error: %r", exc)
