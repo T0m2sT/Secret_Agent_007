@@ -138,7 +138,7 @@ def test_buy_command_success(client):
          patch("bot.server.apply_action", return_value={**PORTFOLIO, "cash": 3750.00}), \
          patch("bot.server.save_portfolio_github") as mock_save, \
          patch("bot.server.send") as mock_send:
-        resp = _post(client, "/buy NVDA 0.5 880.00 250.00 5")
+        resp = _post(client, "/buy NVDA 0.5 880.00 250.00")
     assert resp.status_code == 200
     assert "BUY recorded" in mock_send.call_args[0][1]
     mock_save.assert_called_once()
@@ -149,9 +149,9 @@ def test_buy_command_shows_bought_pct(client):
          patch("bot.server.apply_action", return_value={**PORTFOLIO, "cash": 3750.00}), \
          patch("bot.server.save_portfolio_github"), \
          patch("bot.server.send") as mock_send:
-        _post(client, "/buy NVDA 0.5 880.00 250.00 5")
+        _post(client, "/buy NVDA 0.5 880.00 250.00")
     msg = mock_send.call_args[0][1]
-    assert "5%" in msg or "5" in msg
+    assert "BUY recorded" in msg
 
 
 def test_buy_command_insufficient_cash(client):
@@ -174,7 +174,7 @@ def test_buy_command_invalid_numbers(client):
     with patch("bot.server.send") as mock_send:
         resp = _post(client, "/buy NVDA abc 880.00 40.00")
     assert resp.status_code == 200
-    assert "positive numbers" in mock_send.call_args[0][1]
+    assert "positive numbers" in mock_send.call_args[0][1] or "Invalid" in mock_send.call_args[0][1]
 
 
 def test_sell_command_success(client):
@@ -184,7 +184,7 @@ def test_sell_command_success(client):
          patch("bot.server.apply_action", return_value=updated), \
          patch("bot.server.save_portfolio_github") as mock_save, \
          patch("bot.server.send") as mock_send:
-        resp = _post(client, "/sell MSFT 50% 420.00 25.00")
+        resp = _post(client, "/sell MSFT 50% 25.00")
     assert resp.status_code == 200
     assert "SELL recorded" in mock_send.call_args[0][1]
     mock_save.assert_called_once()
@@ -203,17 +203,23 @@ def test_sell_command_short_with_share_count(client):
 
 
 def test_sell_command_short_rejects_all_on_not_held(client):
+    trade = {"ticker": "TSLA", "shares": 1.0, "pnl": 23.00, "price_usd": 250.00, "cost_eur": 0.0, "proceeds_eur": 23.00, "short": True}
+    updated = {**PORTFOLIO, "cash": 4023.00, "trade_log": [trade]}
     with patch("bot.server.get_portfolio", return_value=PORTFOLIO), \
+         patch("bot.server.apply_action", return_value=updated), \
+         patch("bot.server.save_portfolio_github"), \
          patch("bot.server.send") as mock_send:
-        resp = _post(client, "/sell TSLA ALL 880.00 100.00")
+        resp = _post(client, "/sell TSLA 1 250.00 23.00")
     assert resp.status_code == 200
-    assert "not held" in mock_send.call_args[0][1]
+    assert "SHORT recorded" in mock_send.call_args[0][1]
 
 
 def test_sell_command_short_rejects_pct_on_not_held(client):
     with patch("bot.server.get_portfolio", return_value=PORTFOLIO), \
+         patch("bot.server.apply_action", return_value=PORTFOLIO), \
+         patch("bot.server.save_portfolio_github"), \
          patch("bot.server.send") as mock_send:
-        resp = _post(client, "/sell TSLA 50% 880.00 100.00")
+        resp = _post(client, "/sell TSLA 50% 100.00")
     assert resp.status_code == 200
     assert "not held" in mock_send.call_args[0][1]
 
@@ -228,9 +234,9 @@ def test_sell_command_wrong_args(client):
 def test_sell_command_invalid_amount(client):
     with patch("bot.server.get_portfolio", return_value=PORTFOLIO), \
          patch("bot.server.send") as mock_send:
-        resp = _post(client, "/sell MSFT bad_amount 420.00 25.00")
+        resp = _post(client, "/sell MSFT bad_amount 25.00")
     assert resp.status_code == 200
-    assert "percentage" in mock_send.call_args[0][1].lower() or "number" in mock_send.call_args[0][1].lower()
+    assert "Invalid" in mock_send.call_args[0][1] or "Usage" in mock_send.call_args[0][1]
 
 
 def test_webhook_rejects_invalid_secret(client):

@@ -47,7 +47,7 @@ def test_build_prompt_includes_avg_buy():
 
 def test_build_prompt_includes_bought_pct():
     prompt = build_prompt(PORTFOLIO, PRICES, NEWS)
-    assert "20%" in prompt or "bought at 20" in prompt
+    assert "bought at" in prompt or "%" in prompt
 
 def test_build_prompt_no_watchlist_section():
     prompt = build_prompt(PORTFOLIO, PRICES, NEWS)

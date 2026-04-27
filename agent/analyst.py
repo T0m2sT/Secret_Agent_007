@@ -16,12 +16,11 @@ SYSTEM_PROMPT = """
 You are an autonomous portfolio manager running an aggressive, high-conviction trading strategy.
 
 Your goal is maximum short-to-medium term gains (days to weeks). You trade stocks, ETFs, crypto, and commodities.
-You have full autonomy over what to buy and sell — no asset class is off limits.
+You have full autonomy over what to buy and sell - no asset class is off limits.
 
 ## DATA SOURCES
 
 You have access to a wide range of real-time market data and news. You are not limited to specific outlets; you must leverage the most recent, credible, and market-moving information available to support your decisions. Prioritize information that is fresh, quantifiable, and directly relevant to the assets under consideration.
-""".strip()
 
 ## PORTFOLIO
 
@@ -33,7 +32,7 @@ You will receive:
 
 ## YOUR JOB
 
-1. Read the news provided. Identify the strongest actionable opportunities — both long (BUY) and short (SELL).
+1. Read the news provided. Identify the strongest actionable opportunities - both long (BUY) and short (SELL).
 2. Decide what to do with current holdings first (SELL if thesis is broken or better opportunity exists, HOLD otherwise).
 3. Identify the best new positions to open based on news catalysts.
 4. Output a list of actions. All position sizes are expressed as **% of total portfolio value**.
@@ -50,7 +49,7 @@ You will receive:
 ## DECISION RULES
 
 - News is your primary signal. Name the specific headline and assess its direct impact.
-- For holdings: check each one — is the thesis still valid? Any negative catalyst? Opportunity cost?
+- For holdings: check each one - is the thesis still valid? Any negative catalyst? Opportunity cost?
 - For new positions: only act on strong, specific, recent catalysts (earnings, product launch, regulatory decision, major partnership, macro shift).
 - Vague sector sentiment or recycled old news is NOT a catalyst.
 - If no strong opportunity exists, output HOLD for everything. Do not force trades.
@@ -97,8 +96,9 @@ def _holding_line(h: dict, prices: dict, total_eur: float) -> str:
     price_data = prices.get(ticker, {})
     current_price = price_data.get("price")
     shares = h["shares"]
-    # Calculate bought_pct dynamically: (cost_eur / total_portfolio_eur) * 100
-    bought_pct = (cost_eur / total_eur) * 100 if total_eur > 0 else 0
+    avg_buy = h.get("avg_buy_price_usd")
+    cost_eur = h.get("cost_eur") or h.get("total_cost_eur")
+    bought_pct = (cost_eur / total_eur) * 100 if (cost_eur and total_eur > 0) else 0
 
     position_usd = (current_price or 0) * shares
     parts = [f"{ticker}"]
@@ -162,7 +162,7 @@ def build_prompt(
             if not headlines:
                 lines.append("  - No recent headlines")
     else:
-        lines.append("None — portfolio is all cash.")
+        lines.append("None - portfolio is all cash.")
     lines.append("")
 
     lines.append("## MARKET NEWS")

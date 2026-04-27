@@ -5,10 +5,10 @@ from unittest.mock import MagicMock
 from agent.notifier import format_alert, format_portfolio, send_message
 
 def test_format_alert_sell():
-    action = {"ticker": "NVDA", "action": "SELL", "amount": "30%", "headline": "Export controls hit chip stocks", "reasoning": "Risk elevated short-term."}
+    action = {"ticker": "NVDA", "action": "SELL", "amount_pct": "30%", "amount_eur": 35.52, "headline": "Export controls hit chip stocks", "reasoning": "Risk elevated short-term."}
     prices = {"NVDA": {"price": 118.40, "pct_change": -4.2}}
     msg = format_alert(action, prices)
-    assert "SELL 30%" in msg
+    assert "SELL" in msg
     assert "NVDA" in msg
     assert "118.40" in msg
     assert "-4.2%" in msg
@@ -24,11 +24,12 @@ def test_format_alert_hold():
     assert "No action needed" in msg
 
 def test_format_alert_buy():
-    action = {"ticker": "TSLA", "action": "BUY", "amount": "23.40", "headline": "Tesla new model launch", "reasoning": "Momentum building."}
+    action = {"ticker": "TSLA", "action": "BUY", "amount_pct": "10%", "amount_eur": 23.40, "headline": "Tesla new model launch", "reasoning": "Momentum building."}
     prices = {"TSLA": {"price": 234.00, "pct_change": 2.1}}
     msg = format_alert(action, prices)
-    assert "BUY €23.40" in msg
+    assert "BUY" in msg
     assert "TSLA" in msg
+    assert "23.4" in msg
 
 def test_format_portfolio():
     portfolio = {

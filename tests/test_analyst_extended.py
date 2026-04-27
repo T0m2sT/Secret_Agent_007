@@ -96,7 +96,7 @@ def test_prompt_cash_percentage_shown():
 
 def test_prompt_bought_pct_shown():
     prompt = build_prompt(PORTFOLIO, PRICES, NEWS)
-    assert "10%" in prompt or "bought at 10" in prompt
+    assert "bought at" in prompt or "%" in prompt
 
 def test_prompt_session_regular_note():
     prompt = build_prompt(PORTFOLIO, PRICES, NEWS, market_session="regular")

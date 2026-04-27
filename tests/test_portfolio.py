@@ -68,11 +68,10 @@ def test_apply_action_buy_new_position():
     portfolio = {**SAMPLE, "cash": 500.00, "holdings": []}
     result = apply_action(portfolio, {
         "action": "BUY", "ticker": "TSLA", "shares": 0.5,
-        "price_usd": 250.00, "cost_eur": 120.00, "bought_pct": 10,
+        "price_usd": 250.00, "cost_eur": 120.00,
     })
     assert round(result["cash"], 2) == 380.00
     assert result["holdings"][0]["ticker"] == "TSLA"
-    assert result["holdings"][0]["bought_pct"] == 10
 
 def test_apply_action_buy_weighted_avg():
     portfolio = {

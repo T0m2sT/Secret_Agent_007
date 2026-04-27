@@ -209,18 +209,23 @@ def webhook():
             # 1. /buy TICKER SHARES PRICE_USD COST_EUR
             # 2. /buy TICKER BUY_PCT PROCEEDS_EUR
             if len(parts) == 5:
-                # Standard buy
+                # Standard buy: /buy TICKER SHARES PRICE_USD COST_EUR
                 _, ticker, shares_str, price_str, cost_str = parts
                 ticker = ticker.upper()
                 try:
                     shares, price_usd, cost_eur = float(shares_str), float(price_str), float(cost_str)
                     if shares <= 0 or price_usd <= 0 or cost_eur <= 0: raise ValueError
                 except ValueError:
-                    send(chat_id, "⚠️ Invalid values.")
+                    send(chat_id, "⚠️ Values must be positive numbers.")
                     return "ok", 200
-                
+
+                portfolio = get_portfolio()
+                if cost_eur > portfolio["cash"]:
+                    send(chat_id, f"⚠️ Not enough cash. You have €{portfolio['cash']:.2f}, this costs €{cost_eur:.2f}.")
+                    return "ok", 200
+
                 action = {"action": "BUY", "ticker": ticker, "shares": shares, "price_usd": price_usd, "cost_eur": cost_eur}
-                updated = apply_action(get_portfolio(), action)
+                updated = apply_action(portfolio, action)
                 save_portfolio_github(updated)
                 send(chat_id, f"✅ *BUY recorded*\n{ticker} | {shares} shares @ ${price_usd:.2f} | Cost: €{cost_eur:.2f}")
 
@@ -253,13 +258,18 @@ def webhook():
                 try:
                     sell_pct = float(sell_pct_str[:-1]) / 100
                     proceeds_eur = float(proceeds_str)
-                except:
-                    send(chat_id, "⚠️ Invalid values.")
+                    if sell_pct <= 0 or proceeds_eur <= 0: raise ValueError
+                except (ValueError, AttributeError):
+                    send(chat_id, "⚠️ Invalid values. Use a percentage and a positive number.")
                     return "ok", 200
-                
+
                 portfolio = get_portfolio()
                 holding = next((h for h in portfolio["holdings"] if h["ticker"] == ticker), None)
-                cost_basis = holding["total_cost_eur"] * sell_pct if holding else 0
+                if not holding:
+                    send(chat_id, f"⚠️ {ticker} is not held.")
+                    return "ok", 200
+
+                cost_basis = holding["total_cost_eur"] * sell_pct
                 pnl = proceeds_eur - cost_basis
                 
                 action = {"action": "SELL", "ticker": ticker, "amount": sell_pct_str, "price_usd": 0.0, "proceeds_eur": proceeds_eur}
