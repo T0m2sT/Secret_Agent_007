@@ -1,6 +1,14 @@
 {
-  "cash": 5000.0,
-  "holdings": [],
+  "cash": 2500.0,
+  "holdings": [
+    {
+      "ticker": "MSFT",
+      "shares": 0.3,
+      "total_cost_eur": 2500.0,
+      "avg_buy_price_usd": 143.5,
+      "bought_pct": 50.0
+    }
+  ],
   "last_run": "2026-04-27T17:20:30.278581+00:00",
   "last_alert": {
     "ticker": "QQQ",
