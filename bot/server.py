@@ -87,10 +87,8 @@ def webhook():
                 "/buy TICKER SHARES PRICE\\_USD COST\\_EUR BOUGHT\\_PCT\n"
                 "  _e.g. /buy NVDA 2 118.40 221.35 10_\n"
                 "  _(BOUGHT\\_PCT = % of portfolio this represents)_\n\n"
-                "/sell TICKER SHARES|%|ALL PRICE\\_USD PROCEEDS\\_EUR\n"
-                "  _e.g. /sell NVDA 2 191.20 358.40_\n"
-                "  _e.g. /sell NVDA 50% 191.20 358.40_\n"
-                "  _e.g. /sell NVDA ALL 191.20 716.80_\n\n"
+                "/sell TICKER SELL\\_PCT PROCEEDS\\_EUR\n"
+                "  _e.g. /sell NVDA 50% 358.40_\n\n"
                 "/reset — wipe portfolio back to €5000 clean state"
             ))
 
@@ -235,53 +233,46 @@ def webhook():
 
         elif text.startswith("/sell"):
             parts = text.split()
-            if len(parts) != 5:
+            if len(parts) != 4:
                 send(chat_id, (
-                    "Usage: `/sell TICKER SHARES|%|ALL PRICE_USD PROCEEDS_EUR`\n"
-                    "Examples:\n"
-                    "`/sell NVDA 2 191.20 358.40`\n"
-                    "`/sell NVDA 50% 191.20 358.40`\n"
-                    "`/sell NVDA ALL 191.20 716.80`"
+                    "Usage: `/sell TICKER SELL_PCT PROCEEDS_EUR`\n"
+                    "Example: `/sell NVDA 50% 358.40`"
                 ))
             else:
-                _, ticker, amount, price_str, proceeds_str = parts
+                _, ticker, sell_pct_str, proceeds_str = parts
                 ticker = ticker.upper()
-                amount_up = amount.upper()
-                valid = (
-                    amount_up == "ALL"
-                    or (amount_up.endswith("%") and amount_up[:-1].replace(".", "").isdigit())
-                    or amount_up.replace(".", "").isdigit()
-                )
-                if not valid:
-                    send(chat_id, "⚠️ Amount must be a number, a percentage like `50%`, or `ALL`.")
+                
+                if not sell_pct_str.endswith("%"):
+                    send(chat_id, "⚠️ SELL_PCT must be a percentage like `50%`.")
                 else:
                     try:
-                        price_usd = float(price_str)
+                        sell_pct = float(sell_pct_str[:-1]) / 100
                         proceeds_eur = float(proceeds_str)
-                        if price_usd <= 0 or proceeds_eur <= 0:
+                        if sell_pct <= 0 or sell_pct > 1 or proceeds_eur <= 0:
                             raise ValueError
                     except ValueError:
-                        send(chat_id, "⚠️ Price and proceeds must be positive numbers.")
+                        send(chat_id, "⚠️ Invalid values provided.")
                     else:
                         portfolio = get_portfolio()
                         holding = next((h for h in portfolio["holdings"] if h["ticker"] == ticker), None)
-                        is_short = holding is None
-                        if is_short and (amount_up == "ALL" or amount_up.endswith("%")):
-                            send(chat_id, f"⚠️ {ticker} is not held — use a share count for short sells (e.g. `1` or `2.5`).")
+                        
+                        if not holding:
+                            send(chat_id, f"⚠️ {ticker} is not currently held.")
                         else:
+                            cost_basis_at_pct = holding["total_cost_eur"] * sell_pct
+                            pnl = proceeds_eur - cost_basis_at_pct
+                            
                             action = {
-                                "action": "SELL", "ticker": ticker, "amount": amount_up,
-                                "price_usd": price_usd, "proceeds_eur": proceeds_eur,
+                                "action": "SELL", "ticker": ticker, "amount": sell_pct_str,
+                                "price_usd": 0.0, "proceeds_eur": proceeds_eur,
                             }
                             updated = apply_action(portfolio, action)
-                            last_trade = updated.get("trade_log", [{}])[-1]
-                            pnl = last_trade.get("pnl", 0)
-                            pnl_str = f"+€{pnl:.2f}" if pnl >= 0 else f"-€{abs(pnl):.2f}"
                             save_portfolio_github(updated)
-                            label = "SHORT recorded" if is_short else "SELL recorded"
+                            
+                            pnl_str = f"+€{pnl:.2f}" if pnl >= 0 else f"-€{abs(pnl):.2f}"
                             send(chat_id, (
-                                f"✅ *{label}*\n"
-                                f"{ticker} {amount_up} @ ${price_usd:.2f}\n"
+                                f"✅ *SELL recorded*\n"
+                                f"{ticker} {sell_pct_str}\n"
                                 f"Proceeds: €{proceeds_eur:.2f} | P&L: {pnl_str} | Cash now: €{updated['cash']:.2f}"
                             ))
 

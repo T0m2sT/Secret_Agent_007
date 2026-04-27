@@ -25,13 +25,14 @@ def format_alert(action: dict, prices: dict) -> str:
     pl = _price_line(ticker, prices)
 
     if act == "SELL":
-        amount = action.get("amount", "")
+        amount_pct = action.get("amount_pct", "")
+        amount_eur = action.get("amount_eur", 0)
         headline = action.get("headline", "")
         reasoning = action.get("reasoning", "")
         confidence = action.get("confidence", "")
         conf_str = f"  ·  confidence: {confidence}" if confidence else ""
         lines = [
-            f"{emoji} *SELL {amount} · {ticker}*{conf_str}",
+            f"{emoji} *SELL {amount_pct} (€{amount_eur}) · {ticker}*{conf_str}",
             now,
             "",
             f"💰 {pl}",
@@ -42,13 +43,14 @@ def format_alert(action: dict, prices: dict) -> str:
             "Reply /reason to see full analysis",
         ]
     elif act == "BUY":
-        amount = action.get("amount", "")
+        amount_pct = action.get("amount_pct", "")
+        amount_eur = action.get("amount_eur", 0)
         headline = action.get("headline", "")
         reasoning = action.get("reasoning", "")
         confidence = action.get("confidence", "")
         conf_str = f"  ·  confidence: {confidence}" if confidence else ""
         lines = [
-            f"{emoji} *BUY €{amount} · {ticker}*{conf_str}",
+            f"{emoji} *BUY €{amount_eur} ({amount_pct}) · {ticker}*{conf_str}",
             now,
             "",
             f"💰 {pl}",
