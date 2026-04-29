@@ -14,13 +14,13 @@
       "avg_buy_price_usd": 139.6
     }
   ],
-  "last_run": "2026-04-29T10:12:54.481586+00:00",
+  "last_run": "2026-04-29T11:43:29.382827+00:00",
   "last_alert": {
     "ticker": "TLT",
     "action": "BUY",
     "confidence": "medium",
-    "headline": "Supply Shocks Plus Inflation Bind The Fed's Hands; Why The U.S. Fed Is Not Expected To Move On Rates - Yet; A Final Powell Pause At The Fed",
-    "reasoning": "FOMC week with a widely expected pause creates a tactical opportunity in TLT. Multiple headlines confirm the Fed is on hold, which removes the primary downside risk for long-duration bonds near-term. TLT is up +0.3% today and a 'pause confirmed' outcome could drive a relief rally in treasuries. Additionally, if Iran tensions escalate or equity markets show fatigue (IWM -0.8% is a warning sign), TLT benefits as a safe-haven. This is a short-term tactical trade around the FOMC event, not a long-term bond thesis. Risk is a hawkish surprise or stagflation narrative dominating.",
+    "headline": "Why The U.S. Fed Is Not Expected To Move On Rates - Yet; A Final Powell Pause At The Fed As Inflation Risks",
+    "reasoning": "FOMC week with a widely expected pause creates a tactical opportunity in TLT. Supply shock inflation (oil at $100) binds the Fed's hands from cutting, but also prevents hikes - a pause scenario is bond-neutral to mildly positive. TLT is up +0.3% today and the 'Rates Spark: It's Jay's Day' headline suggests market focus on Powell's tone. If Powell signals patience and acknowledges growth risks from trade/geopolitics, TLT could rally. This is a hedge against equity/commodity risk in the portfolio and a FOMC event play. Pre-market entry acceptable given the macro catalyst is well-defined.",
     "market_session": "pre-market",
     "all_actions": [
       {
@@ -29,55 +29,57 @@
         "action": "HOLD",
         "headline": "Gold Selloff Deepens: Technical Breakdown And Rising Oil Prices Accelerate Bearish Momentum",
         "confidence": "medium",
-        "reasoning": "Gold is showing mixed signals: a technical breakdown headline is bearish short-term, but macro tailwinds (FOMC week uncertainty, Iran war tensions, USD pressure) remain intact. The position is nearly flat (-0.1% P&L) and today is up +0.3%, suggesting some stabilization. With FOMC this week, gold could benefit from any dovish surprise or risk-off move. Holding through the FOMC event makes sense rather than selling into a potential bounce. Pre-market session limits conviction on new entries or exits."
+        "reasoning": "Gold is showing mixed signals: a technical breakdown headline is bearish short-term, but macro tailwinds (FOMC week uncertainty, geopolitical tensions via Iran/Hormuz, USD weakness) remain supportive. The position is nearly flat (-0.1% P&L) and today is up +0.3%, suggesting stabilization. With FOMC this week, gold could benefit from any dovish surprise or risk-off move. Holding rather than cutting given the macro backdrop, but not adding given the technical breakdown risk in pre-market."
       },
       {
         "ticker": "USO",
         "company_name": "United States Oil Fund",
-        "action": "HOLD",
-        "headline": "UAE Quits OPEC, Crude Oil Explodes To $100 - WTI Technical Analysis; Strait of Hormuz transit stalemate concerns",
-        "confidence": "high",
-        "reasoning": "USO has multiple strong bullish catalysts converging: UAE exit from OPEC signals supply fragmentation, a Japanese supertanker completing a Hormuz transit suggests ongoing disruption risk rather than resolution, and Iran's revised peace proposal is uncertain. The 5-day gain of +7.9% confirms strong momentum. WTI targeting $100 is a credible near-term target given supply shock dynamics. Thesis remains fully intact \u2014 hold and let the trade run. No reason to exit with this catalyst stack still active."
-      },
-      {
-        "ticker": "SLV",
-        "company_name": "iShares Silver Trust",
         "action": "BUY",
         "amount_pct": "15%",
         "amount_eur": 750.0,
-        "headline": "Exchange-Traded Funds Down, Equity Futures Mixed Pre-Bell Monday Amid Hormuz Uncertainty; SLV +0.6% today",
-        "confidence": "medium",
-        "reasoning": "Silver is up +0.6% today and benefits from the same macro tailwinds as gold (FOMC uncertainty, geopolitical risk, inflation concerns from supply shocks) while also having industrial demand exposure. The 'Buy Gold, Sell Silver' headline is a contrarian signal \u2014 when analysts recommend selling silver, it often marks a near-term bottom. With gold holding and oil surging, precious metals broadly should benefit. SLV is liquid, available on Trading 212, and offers a diversified commodity play alongside existing GLD. Pre-market entry carries gap risk but the catalyst is macro/structural rather than event-specific."
+        "headline": "UAE Quits OPEC, Crude Oil Explodes To $100 - WTI Technical Analysis; Japanese Supertanker Completes First Hormuz Transit Since Iran War Began",
+        "confidence": "high",
+        "reasoning": "Multiple converging catalysts make USO a high-conviction add: UAE's exit from OPEC is a structural supply shock that removes a major swing producer from coordinated output management, historically bullish for crude. WTI technical analysis targets $100. The Hormuz situation remains tense with the Bloomberg report of the first successful Japanese supertanker transit being notable but fragile - ongoing Iran war risk keeps supply disruption premium elevated. USO is already up +7.9% over 5 days with momentum intact. Pre-market session adds gap risk, but the catalyst is direct and material. Sizing at 15% to add conviction without overexposure."
       },
       {
         "ticker": "TLT",
         "company_name": "iShares 20+ Year Treasury Bond ETF",
         "action": "BUY",
-        "amount_pct": "20%",
-        "amount_eur": 1000.0,
-        "headline": "Supply Shocks Plus Inflation Bind The Fed's Hands; Why The U.S. Fed Is Not Expected To Move On Rates - Yet; A Final Powell Pause At The Fed",
+        "amount_pct": "10%",
+        "amount_eur": 500.0,
+        "headline": "Why The U.S. Fed Is Not Expected To Move On Rates - Yet; A Final Powell Pause At The Fed As Inflation Risks",
         "confidence": "medium",
-        "reasoning": "FOMC week with a widely expected pause creates a tactical opportunity in TLT. Multiple headlines confirm the Fed is on hold, which removes the primary downside risk for long-duration bonds near-term. TLT is up +0.3% today and a 'pause confirmed' outcome could drive a relief rally in treasuries. Additionally, if Iran tensions escalate or equity markets show fatigue (IWM -0.8% is a warning sign), TLT benefits as a safe-haven. This is a short-term tactical trade around the FOMC event, not a long-term bond thesis. Risk is a hawkish surprise or stagflation narrative dominating."
+        "reasoning": "FOMC week with a widely expected pause creates a tactical opportunity in TLT. Supply shock inflation (oil at $100) binds the Fed's hands from cutting, but also prevents hikes - a pause scenario is bond-neutral to mildly positive. TLT is up +0.3% today and the 'Rates Spark: It's Jay's Day' headline suggests market focus on Powell's tone. If Powell signals patience and acknowledges growth risks from trade/geopolitics, TLT could rally. This is a hedge against equity/commodity risk in the portfolio and a FOMC event play. Pre-market entry acceptable given the macro catalyst is well-defined."
+      },
+      {
+        "ticker": "SLV",
+        "company_name": "iShares Silver Trust",
+        "action": "HOLD",
+        "headline": "Buy Gold, Sell Silver As Middle East Tensions Resurface",
+        "confidence": "low",
+        "reasoning": "Not currently held, and the headline 'Buy Gold, Sell Silver' is explicitly bearish for SLV. Silver is up +0.6% today but the directional call from analysts favors gold over silver in the current geopolitical environment. No position initiated - the catalyst is actually a negative signal for SLV relative to GLD."
       }
     ],
     "risks": [
-      "Pre-market session: all prices subject to gap risk at open \u2014 entries in SLV and TLT may fill at worse levels than indicated",
-      "FOMC decision this week is the dominant macro risk \u2014 a hawkish surprise would hurt both TLT and GLD simultaneously",
-      "Iran peace proposal (CNN) could materialize quickly and deflate USO and oil-related momentum sharply",
-      "UAE OPEC exit and $100 oil target may already be partially priced in after USO's +7.9% 5-day run",
-      "No general market headlines available limits broader context \u2014 portfolio is operating with incomplete macro picture",
-      "IWM -0.8% signals potential small-cap/risk-off rotation that could drag broader sentiment and commodities"
+      "Pre-market session: all prices subject to gap risk at open; USO and TLT entries may fill at worse levels than indicated",
+      "UAE OPEC exit headline may be partially priced in given USO's +7.9% 5-day run; momentum could reverse on profit-taking",
+      "FOMC outcome is binary - a hawkish surprise (unlikely but possible given oil at $100 and inflation risk) would hurt TLT significantly",
+      "Hormuz situation is fluid: any ceasefire or diplomatic breakthrough with Iran would sharply reverse USO gains",
+      "No general market headlines available limits macro context; broader equity/risk sentiment unknown",
+      "GLD technical breakdown risk is real - if gold breaks key support levels, the position could deteriorate quickly despite macro tailwinds",
+      "Combined new BUY actions total \u20ac1,250 EUR against \u20ac3,000 available cash - well within limits but leaves limited dry powder for further opportunities"
     ]
   },
   "trade_log": [],
   "last_market_session": "pre-market",
   "last_analysis_confidence": "medium",
   "last_analysis_risks": [
-    "Pre-market session: all prices subject to gap risk at open \u2014 entries in SLV and TLT may fill at worse levels than indicated",
-    "FOMC decision this week is the dominant macro risk \u2014 a hawkish surprise would hurt both TLT and GLD simultaneously",
-    "Iran peace proposal (CNN) could materialize quickly and deflate USO and oil-related momentum sharply",
-    "UAE OPEC exit and $100 oil target may already be partially priced in after USO's +7.9% 5-day run",
-    "No general market headlines available limits broader context \u2014 portfolio is operating with incomplete macro picture",
-    "IWM -0.8% signals potential small-cap/risk-off rotation that could drag broader sentiment and commodities"
+    "Pre-market session: all prices subject to gap risk at open; USO and TLT entries may fill at worse levels than indicated",
+    "UAE OPEC exit headline may be partially priced in given USO's +7.9% 5-day run; momentum could reverse on profit-taking",
+    "FOMC outcome is binary - a hawkish surprise (unlikely but possible given oil at $100 and inflation risk) would hurt TLT significantly",
+    "Hormuz situation is fluid: any ceasefire or diplomatic breakthrough with Iran would sharply reverse USO gains",
+    "No general market headlines available limits macro context; broader equity/risk sentiment unknown",
+    "GLD technical breakdown risk is real - if gold breaks key support levels, the position could deteriorate quickly despite macro tailwinds",
+    "Combined new BUY actions total \u20ac1,250 EUR against \u20ac3,000 available cash - well within limits but leaves limited dry powder for further opportunities"
   ]
 }
