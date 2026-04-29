@@ -14,72 +14,62 @@
       "avg_buy_price_usd": 139.6
     }
   ],
-  "last_run": "2026-04-29T17:26:29.479239+00:00",
+  "last_run": "2026-04-29T18:19:06.820075+00:00",
   "last_alert": {
-    "ticker": "TLT",
+    "ticker": "USO",
     "action": "BUY",
-    "confidence": "low",
-    "headline": "Rates Spark: It's Jay's Day / Supply Shocks Plus Inflation Bind The Fed's Hands",
-    "reasoning": "FOMC decision is imminent and TLT is down -0.4% today. If Powell signals any dovish pivot or pause, long-duration bonds could rally sharply. TLT at $85.79 is near multi-year lows, offering asymmetric upside if the Fed softens its tone. The risk is that inflation fears from Middle East oil supply disruption keep the Fed hawkish, which would pressure TLT further. This is a speculative FOMC play with a tight thesis \u2014 sized conservatively at 14% of portfolio. The session is regular, making this actionable.",
+    "confidence": "high",
+    "headline": "UAE Leaves OPEC; Iran Warns Of 'Unprecedented Military Action'; Strait Of Hormuz Closure Risk",
+    "reasoning": "The convergence of UAE exiting OPEC (structural supply reduction), active Strait of Hormuz closure risk (20% of global oil supply), and Iran's escalating military threats creates a multi-catalyst supply shock scenario. Oil has already surged 6% today and the geopolitical premium is likely to expand further. Adding to the existing winning position with proceeds from GLD sale and available cash. This is a high-conviction momentum trade with clear fundamental backing. Sizing at 20% of portfolio keeps total USO exposure elevated but manageable given the strong directional thesis.",
     "market_session": "regular",
     "all_actions": [
       {
         "ticker": "GLD",
         "company_name": "SPDR Gold Shares",
-        "action": "HOLD",
+        "action": "SELL",
+        "amount_pct": "100%",
+        "amount_eur": 985.0,
         "headline": "Gold Selloff Deepens: Technical Breakdown And Rising Oil Prices Accelerate Bearish Momentum",
         "confidence": "medium",
-        "reasoning": "GLD is down 1% from cost and -3% over 5 days, with headlines pointing to a technical breakdown and bearish momentum in the short term. However, the long-term macro thesis (geopolitical tensions, Iran escalation, FOMC uncertainty) remains intact per 'Real Yields Are Crushing Gold in Short Term but Long-Term Picture Remains Intact.' Selling here would lock in losses at a potential near-term low. The position is only 20% of portfolio and the macro backdrop still supports gold over weeks. Hold and reassess post-FOMC."
+        "reasoning": "GLD is down -1.4% overall and -3.3% over 5 days with a confirmed technical breakdown per the headline. Rising oil prices and Middle East tensions are driving inflation fears that are pressuring real yields, which in the short term are 'crushing gold.' The thesis for gold as a safe haven is being undermined by the oil surge narrative dominating flows. With USO already providing geopolitical risk exposure and GLD showing deteriorating momentum, the opportunity cost of holding GLD is high. Exiting the full position to redeploy into the stronger oil trade is the better risk-adjusted move."
       },
       {
         "ticker": "USO",
         "company_name": "United States Oil Fund",
-        "action": "SELL",
-        "amount_pct": "40%",
-        "amount_eur": 700.0,
-        "headline": "UAE Leaves OPEC: Here's What It Means For Oil Prices / Trump Tells Aides to Prepare for Extended Blockade of Iran - WSJ",
-        "confidence": "medium",
-        "reasoning": "USO is up +7.3% from cost and +11.2% over 5 days \u2014 a strong run driven by Iran escalation fears and geopolitical risk premium. The position is now 35%+ of portfolio and has delivered significant gains. Two competing forces are now at play: UAE's OPEC exit is bearish for oil prices long-term (more supply outside OPEC discipline), while Iran blockade fears are bullish short-term. With the position already heavily profitable and the UAE OPEC exit introducing a structural bearish signal, trimming ~40% of the position locks in gains and reduces concentration risk ahead of FOMC volatility. Retain 60% to keep exposure to the Iran escalation catalyst."
+        "action": "HOLD",
+        "headline": "Outlook For Oil As Strait Of Hormuz Closure, UAE Exit From OPEC Roils Energy Markets; Oil Surges 6%",
+        "confidence": "high",
+        "reasoning": "USO is up +7.1% overall and +10.9% over 5 days with today's +3.7% move driven by multiple powerful catalysts: UAE exiting OPEC (supply reduction), Strait of Hormuz closure risk, Iran threatening 'unprecedented military action,' and Iran's uranium stockpile access warning. These are fresh, material, geopolitical supply-shock catalysts that are not priced in yet. The thesis remains extremely strong. Hold and consider adding on any intraday dip."
       },
       {
-        "ticker": "UNG",
-        "company_name": "United States Natural Gas Fund",
+        "ticker": "USO",
+        "company_name": "United States Oil Fund",
         "action": "BUY",
-        "amount_pct": "10%",
-        "amount_eur": 500.0,
-        "headline": "Iran Could Access Uranium Stockpile / Trump Tells Aides to Prepare for Extended Blockade of Iran - WSJ",
-        "confidence": "medium",
-        "reasoning": "Middle East escalation risk (Iran blockade, military threats) creates energy supply disruption risk beyond crude oil. Natural gas is a direct beneficiary of geopolitical risk in the region and LNG demand spikes during conflict scenarios. UNG provides a diversified energy hedge alongside USO. With USO being trimmed, reallocating some proceeds into natural gas maintains energy sector exposure with a different risk profile. The Iran escalation headlines are fresh and material catalysts for energy broadly."
-      },
-      {
-        "ticker": "TLT",
-        "company_name": "iShares 20+ Year Treasury Bond ETF",
-        "action": "BUY",
-        "amount_pct": "14%",
-        "amount_eur": 700.0,
-        "headline": "Rates Spark: It's Jay's Day / Supply Shocks Plus Inflation Bind The Fed's Hands",
-        "confidence": "low",
-        "reasoning": "FOMC decision is imminent and TLT is down -0.4% today. If Powell signals any dovish pivot or pause, long-duration bonds could rally sharply. TLT at $85.79 is near multi-year lows, offering asymmetric upside if the Fed softens its tone. The risk is that inflation fears from Middle East oil supply disruption keep the Fed hawkish, which would pressure TLT further. This is a speculative FOMC play with a tight thesis \u2014 sized conservatively at 14% of portfolio. The session is regular, making this actionable."
+        "amount_pct": "20%",
+        "amount_eur": 1000.0,
+        "headline": "UAE Leaves OPEC; Iran Warns Of 'Unprecedented Military Action'; Strait Of Hormuz Closure Risk",
+        "confidence": "high",
+        "reasoning": "The convergence of UAE exiting OPEC (structural supply reduction), active Strait of Hormuz closure risk (20% of global oil supply), and Iran's escalating military threats creates a multi-catalyst supply shock scenario. Oil has already surged 6% today and the geopolitical premium is likely to expand further. Adding to the existing winning position with proceeds from GLD sale and available cash. This is a high-conviction momentum trade with clear fundamental backing. Sizing at 20% of portfolio keeps total USO exposure elevated but manageable given the strong directional thesis."
       }
     ],
     "risks": [
-      "FOMC decision today creates binary risk across all asset classes \u2014 hawkish surprise would hurt TLT and potentially GLD further",
-      "UAE OPEC exit is a structural bearish signal for oil but Iran escalation could override it short-term, making USO direction uncertain",
-      "GLD technical breakdown could deepen if real yields remain elevated post-FOMC",
-      "UNG liquidity and tracking error risk \u2014 natural gas is highly volatile and may not track geopolitical risk cleanly",
-      "No general market headlines available limits macro context; relying heavily on sector-specific news",
-      "Iran escalation headlines may be priced in already given USO's +11.2% 5-day run"
+      "Geopolitical de-escalation or ceasefire announcement could rapidly reverse oil gains and cause a sharp USO drawdown",
+      "FOMC decision today (Fed Day) could introduce significant volatility across all asset classes; a hawkish surprise could strengthen USD and pressure commodities",
+      "Strait of Hormuz closure risk may be priced in faster than actual closure occurs, leading to a 'buy the rumor, sell the news' reversal",
+      "Concentrated position in USO after adding creates single-asset risk; if oil reverses, portfolio impact is severe",
+      "Iran headlines from state-run PressTV may be propaganda rather than credible military intelligence, inflating geopolitical risk premium artificially",
+      "After-hours tech earnings (mentioned in headlines) could shift macro sentiment and drag energy sector if broader risk-off materializes"
     ]
   },
   "trade_log": [],
   "last_market_session": "regular",
   "last_analysis_confidence": "medium",
   "last_analysis_risks": [
-    "FOMC decision today creates binary risk across all asset classes \u2014 hawkish surprise would hurt TLT and potentially GLD further",
-    "UAE OPEC exit is a structural bearish signal for oil but Iran escalation could override it short-term, making USO direction uncertain",
-    "GLD technical breakdown could deepen if real yields remain elevated post-FOMC",
-    "UNG liquidity and tracking error risk \u2014 natural gas is highly volatile and may not track geopolitical risk cleanly",
-    "No general market headlines available limits macro context; relying heavily on sector-specific news",
-    "Iran escalation headlines may be priced in already given USO's +11.2% 5-day run"
+    "Geopolitical de-escalation or ceasefire announcement could rapidly reverse oil gains and cause a sharp USO drawdown",
+    "FOMC decision today (Fed Day) could introduce significant volatility across all asset classes; a hawkish surprise could strengthen USD and pressure commodities",
+    "Strait of Hormuz closure risk may be priced in faster than actual closure occurs, leading to a 'buy the rumor, sell the news' reversal",
+    "Concentrated position in USO after adding creates single-asset risk; if oil reverses, portfolio impact is severe",
+    "Iran headlines from state-run PressTV may be propaganda rather than credible military intelligence, inflating geopolitical risk premium artificially",
+    "After-hours tech earnings (mentioned in headlines) could shift macro sentiment and drag energy sector if broader risk-off materializes"
   ]
 }
