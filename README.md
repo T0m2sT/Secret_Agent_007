@@ -158,6 +158,25 @@ portfolio.json     # Live portfolio state (auto-committed after each run)
 | `CLAUDE_MODEL` | Optional — override Claude model (default: `claude-sonnet-4-6`) |
 | `TELEGRAM_WEBHOOK_SECRET` | Optional — validates incoming Telegram webhook requests |
 
-GitHub Actions secrets: `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `NEWS_API_KEY`, `FINNHUB_API_KEY`.
+### Where to add them
 
-Railway env vars: all of the above plus `GITHUB_TOKEN`, `GITHUB_REPO`, `PORTFOLIO_RAW_URL`.
+**GitHub Actions** — used by the scheduled agent (`portfolio-agent.yml`):
+
+1. Go to your repo on GitHub → **Settings → Secrets and variables → Actions → New repository secret**.
+2. Add each of the following as a secret:
+   - `ANTHROPIC_API_KEY`
+   - `TELEGRAM_BOT_TOKEN`
+   - `TELEGRAM_CHAT_ID`
+   - `NEWS_API_KEY`
+   - `FINNHUB_API_KEY`
+
+**Railway** — used by the Telegram bot server (`bot/server.py`):
+
+1. Open your Railway project → select the service → **Variables**.
+2. Add all five GitHub secrets above **plus**:
+   - `GITHUB_TOKEN` — a GitHub personal access token with `repo` scope (so the bot can write `portfolio.json`)
+   - `GITHUB_REPO` — your repo in `owner/name` format (e.g. `T0m2sT/Secret_Agent_007`)
+   - `PORTFOLIO_RAW_URL` — the raw URL to `portfolio.json` (e.g. `https://raw.githubusercontent.com/T0m2sT/Secret_Agent_007/main/portfolio.json`)
+3. Optionally add:
+   - `TELEGRAM_WEBHOOK_SECRET` — if you want Telegram to sign its webhook requests
+   - `CLAUDE_MODEL` — to override the default Claude model
